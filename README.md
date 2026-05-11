@@ -54,6 +54,26 @@
       <td align="center"><a href="docs/model-deployment/sglang/qwen3.5.md">✅</a></td>
     </tr>
     <tr>
+      <td rowspan="2">DeepSeek-R1-Distill-Qwen-32B</td>
+      <td>vLLM</td>
+      <td align="center">-</td>
+      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-qwen-32b.md">✅</a></td>
+      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-qwen-32b.md">✅</a></td>
+    </tr>
+    <tr>
+      <td>SGLang</td>
+      <td align="center">-</td>
+      <td align="center"><a href="docs/model-deployment/sglang/deepseek-r1-distill-qwen-32b.md">✅</a></td>
+      <td align="center"><a href="docs/model-deployment/sglang/deepseek-r1-distill-qwen-32b.md">✅</a></td>
+    </tr>
+    <tr>
+      <td>DeepSeek-R1-Distill-Llama-70B</td>
+      <td>vLLM</td>
+      <td align="center">-</td>
+      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-llama-70b.md">✅</a></td>
+      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-llama-70b.md">✅</a></td>
+    </tr>
+    <tr>
       <td rowspan="2">DeepSeek-V3</td>
       <td>vLLM</td>
       <td align="center">-</td>
