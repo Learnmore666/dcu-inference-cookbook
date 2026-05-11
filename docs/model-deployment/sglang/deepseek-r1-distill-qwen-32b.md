@@ -8,7 +8,7 @@ DeepSeek-R1-Distill-Qwen-32B 基于 Qwen2.5-32B 蒸馏，可在 DCU 上通过 SG
 
 | 模型 | 参数量 | 上下文 | 量化方式 | 推荐硬件 |
 |------|--------|--------|---------|---------|
-| DeepSeek-R1-Distill-Qwen-32B | 32B | 128K | BF16 | 2x BW1000 64GB TP / 1x BW1100 144GB |
+| DeepSeek-R1-Distill-Qwen-32B | 32B | 128K | BF16 | 1x BW1100 144GB / 2x BW1000 64GB TP |
 
 ## 启动命令
 
@@ -17,12 +17,11 @@ export SGLANG_ENABLE_SPEC_V2=1
 export USE_DCU_CUSTOM_ALLREDUCE=1
 export SGLANG_USE_LIGHTOP=1
 export SGLANG_USE_FUSED_TOPK_SOFTMAX=1
-export SGLANG_USE_CAUSAL_CONV1D=1
 export SGLANG_KV_LAYOUT_DCU_FA=1
 
 python -m sglang.launch_server \
     --model-path deepseek-ai/DeepSeek-R1-Distill-Qwen-32B \
-    --tp-size 2 \
+    --tp-size 1 \
     --trust-remote-code \
     --dtype bfloat16 \
     --port 30000 \
