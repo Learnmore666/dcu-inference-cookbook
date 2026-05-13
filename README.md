@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <tr>
-      <td rowspan="5" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
+      <td rowspan="5" align="center"><img src="https://mintcdn.com/lmsysorg/qU-amK4epWkVF-4l/cards/logos/qwen.png" height="40"/><br/>Alibaba</td>
       <td rowspan="2">Qwen3</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -68,7 +68,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="4" align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
+      <td rowspan="4" align="center"><img src="https://mintcdn.com/lmsysorg/l-mx5WICS6M2Luiz/cards/logos/deepseek.png" height="40"/><br/>DeepSeek</td>
       <td>DeepSeek-R1</td>
       <td>SGLang</td>
       <td align="center">-</td>
@@ -96,7 +96,7 @@
       <td align="center"><a href="docs/model-deployment/sglang/deepseek-v3.2.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/THUDM.png?size=64" height="40"/><br/>Zhipu AI</td>
+      <td rowspan="2" align="center"><img src="https://mintcdn.com/lmsysorg/l-mx5WICS6M2Luiz/cards/logos/glm.png" height="40"/><br/>Zhipu AI</td>
       <td rowspan="2">GLM-5</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -110,7 +110,7 @@
       <td align="center"><a href="docs/model-deployment/sglang/glm-5.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="4" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
+      <td rowspan="4" align="center"><img src="https://mintcdn.com/lmsysorg/l-mx5WICS6M2Luiz/cards/logos/moonshotai.png" height="40"/><br/>Moonshot AI</td>
       <td rowspan="2">Kimi-K2</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -137,7 +137,7 @@
       <td align="center"><a href="docs/model-deployment/sglang/kimi-k2.5.md">✅</a></td>
     </tr>
     <tr>
-      <td align="center"><img src="https://github.com/XiaoMi.png?size=64" height="40"/><br/>Xiaomi</td>
+      <td align="center"><img src="https://mintcdn.com/lmsysorg/l-mx5WICS6M2Luiz/cards/logos/xiaomi.png" height="40"/><br/>Xiaomi</td>
       <td>MiMo-V2-Flash</td>
       <td>SGLang</td>
       <td align="center">-</td>
@@ -145,7 +145,7 @@
       <td align="center"><a href="docs/model-deployment/sglang/mimo-v2-flash.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/MiniMax-AI.png?size=64" height="40"/><br/>MiniMax</td>
+      <td rowspan="2" align="center"><img src="https://mintcdn.com/lmsysorg/l-mx5WICS6M2Luiz/cards/logos/minimax.png" height="40"/><br/>MiniMax</td>
       <td rowspan="2">MiniMax-M2.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
