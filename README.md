@@ -59,6 +59,13 @@
       <td align="center"><a href="docs/model-deployment/sglang/qwen3.5.md">✅</a></td>
     </tr>
     <tr>
+      <td>Qwen3-VL</td>
+      <td>vLLM</td>
+      <td align="center">-</td>
+      <td align="center"><a href="docs/model-deployment/vllm/qwen3-vl.md">✅</a></td>
+      <td align="center">-</td>
+    </tr>
+    <tr>
       <td>DeepSeek-R1</td>
       <td>SGLang</td>
       <td align="center">-</td>
@@ -164,19 +171,7 @@
       <td align="center"><a href="docs/model-deployment/diffusion/comfyui-dcu.md">✅</a></td>
       <td align="center">-</td>
     </tr>
-    <tr>
-      <td rowspan="2">SD3 / FLUX / SDXL</td>
-      <td>Diffusers</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/diffusion/sd3-flux.md">✅</a></td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>ComfyUI</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/diffusion/comfyui-dcu.md">✅</a></td>
-      <td align="center">-</td>
-    </tr>
+
   </tbody>
 </table>
 
