@@ -24,7 +24,7 @@
 <table>
   <thead>
     <tr>
-      <th>发布者</th>
+      <th>厂商</th>
       <th>模型</th>
       <th>框架</th>
       <th align="center">K100_AI</th>
@@ -34,7 +34,7 @@
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
+      <td rowspan="5" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
       <td rowspan="2">Qwen3</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -48,7 +48,6 @@
       <td align="center"><a href="docs/model-deployment/sglang/qwen3.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
       <td rowspan="2">Qwen3.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -62,7 +61,6 @@
       <td align="center"><a href="docs/model-deployment/sglang/qwen3.5.md">✅</a></td>
     </tr>
     <tr>
-      <td align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
       <td>Qwen3-VL</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -70,7 +68,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
+      <td rowspan="4" align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
       <td>DeepSeek-R1</td>
       <td>SGLang</td>
       <td align="center">-</td>
@@ -78,7 +76,6 @@
       <td align="center"><a href="docs/model-deployment/sglang/deepseek-r1.md">✅</a></td>
     </tr>
     <tr>
-      <td align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
       <td>DeepSeek-V3</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -86,7 +83,6 @@
       <td align="center"><a href="docs/model-deployment/vllm/deepseek-v3.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
       <td rowspan="2">DeepSeek-V3.2</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -114,7 +110,7 @@
       <td align="center"><a href="docs/model-deployment/sglang/glm-5.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
+      <td rowspan="4" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
       <td rowspan="2">Kimi-K2</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -128,7 +124,6 @@
       <td align="center"><a href="docs/model-deployment/sglang/kimi-k2.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
       <td rowspan="2">Kimi-K2.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
