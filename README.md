@@ -24,6 +24,7 @@
 <table>
   <thead>
     <tr>
+      <th>发布者</th>
       <th>模型</th>
       <th>框架</th>
       <th align="center">K100_AI</th>
@@ -33,7 +34,8 @@
   </thead>
   <tbody>
     <tr>
-      <td rowspan="2"><img src="https://github.com/QwenLM.png?size=20" height="20" valign="middle"/> Qwen3</td>
+      <td rowspan="2" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
+      <td rowspan="2">Qwen3</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/vllm/qwen3.md">✅</a></td>
@@ -46,7 +48,8 @@
       <td align="center"><a href="docs/model-deployment/sglang/qwen3.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><img src="https://github.com/QwenLM.png?size=20" height="20" valign="middle"/> Qwen3.5</td>
+      <td rowspan="2" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
+      <td rowspan="2">Qwen3.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/vllm/qwen3.5.md">✅</a></td>
@@ -59,28 +62,32 @@
       <td align="center"><a href="docs/model-deployment/sglang/qwen3.5.md">✅</a></td>
     </tr>
     <tr>
-      <td><img src="https://github.com/QwenLM.png?size=20" height="20" valign="middle"/> Qwen3-VL</td>
+      <td align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
+      <td>Qwen3-VL</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/vllm/qwen3-vl.md">✅</a></td>
       <td align="center">-</td>
     </tr>
     <tr>
-      <td><img src="https://github.com/deepseek-ai.png?size=20" height="20" valign="middle"/> DeepSeek-R1</td>
+      <td align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
+      <td>DeepSeek-R1</td>
       <td>SGLang</td>
       <td align="center">-</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/sglang/deepseek-r1.md">✅</a></td>
     </tr>
     <tr>
-      <td><img src="https://github.com/deepseek-ai.png?size=20" height="20" valign="middle"/> DeepSeek-V3</td>
+      <td align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
+      <td>DeepSeek-V3</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/vllm/deepseek-v3.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><img src="https://github.com/deepseek-ai.png?size=20" height="20" valign="middle"/> DeepSeek-V3.2</td>
+      <td rowspan="2" align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
+      <td rowspan="2">DeepSeek-V3.2</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center">-</td>
@@ -93,7 +100,8 @@
       <td align="center"><a href="docs/model-deployment/sglang/deepseek-v3.2.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><img src="https://github.com/THUDM.png?size=20" height="20" valign="middle"/> GLM-5</td>
+      <td rowspan="2" align="center"><img src="https://github.com/THUDM.png?size=64" height="40"/><br/>Zhipu AI</td>
+      <td rowspan="2">GLM-5</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center">-</td>
@@ -106,7 +114,8 @@
       <td align="center"><a href="docs/model-deployment/sglang/glm-5.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><img src="https://github.com/MoonshotAI.png?size=20" height="20" valign="middle"/> Kimi-K2</td>
+      <td rowspan="2" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
+      <td rowspan="2">Kimi-K2</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center">-</td>
@@ -119,7 +128,8 @@
       <td align="center"><a href="docs/model-deployment/sglang/kimi-k2.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><img src="https://github.com/MoonshotAI.png?size=20" height="20" valign="middle"/> Kimi-K2.5</td>
+      <td rowspan="2" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
+      <td rowspan="2">Kimi-K2.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center">-</td>
@@ -132,14 +142,16 @@
       <td align="center"><a href="docs/model-deployment/sglang/kimi-k2.5.md">✅</a></td>
     </tr>
     <tr>
-      <td><img src="https://github.com/XiaoMi.png?size=20" height="20" valign="middle"/> MiMo-V2-Flash</td>
+      <td align="center"><img src="https://github.com/XiaoMi.png?size=64" height="40"/><br/>Xiaomi</td>
+      <td>MiMo-V2-Flash</td>
       <td>SGLang</td>
       <td align="center">-</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/sglang/mimo-v2-flash.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="2"><img src="https://github.com/MiniMax-AI.png?size=20" height="20" valign="middle"/> MiniMax-M2.5</td>
+      <td rowspan="2" align="center"><img src="https://github.com/MiniMax-AI.png?size=64" height="40"/><br/>MiniMax</td>
+      <td rowspan="2">MiniMax-M2.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/vllm/minimax-2.x.md">✅</a></td>
