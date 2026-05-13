@@ -22,16 +22,14 @@
 ## 📋 模型列表
 
 <table>
-  <thead>
-    <tr>
-      <th>厂商</th>
-      <th>模型</th>
-      <th>框架</th>
-      <th align="center">K100_AI</th>
-      <th align="center">BW1000</th>
-      <th align="center">BW1100</th>
-    </tr>
-  </thead>
+  <tr>
+    <td align="center"><b>厂商</b></td>
+    <td><b>模型</b></td>
+    <td><b>框架</b></td>
+    <td align="center"><b>K100_AI</b></td>
+    <td align="center"><b>BW1000</b></td>
+    <td align="center"><b>BW1100</b></td>
+  </tr>
   <tbody>
     <tr>
       <td rowspan="5" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
