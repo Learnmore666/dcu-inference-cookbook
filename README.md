@@ -151,27 +151,6 @@
       <td align="center"><a href="docs/model-deployment/sglang/minimax-m2.5.md">✅</a></td>
       <td align="center"><a href="docs/model-deployment/sglang/minimax-m2.5.md">✅</a></td>
     </tr>
-    <tr>
-      <td>CogVideoX</td>
-      <td>Diffusers</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/diffusion/cogvideox.md">✅</a></td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Wan2.1</td>
-      <td>Diffusers</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/diffusion/wan2.1.md">✅</a></td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>ComfyUI</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/diffusion/comfyui-dcu.md">✅</a></td>
-      <td align="center">-</td>
-    </tr>
-
   </tbody>
 </table>
 
