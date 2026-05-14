@@ -32,7 +32,7 @@
   </tr>
   <tbody>
     <tr>
-      <td rowspan="16" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
+      <td rowspan="16" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/620760a26e3b7210c2ff1943/-s1gyJfvbE1RgO5iBeNOi.png" height="40"/><br/>Qwen</td>
       <td rowspan="2">Qwen3.6</td>
       <td>vLLM</td>
       <td align="center">🚧</td>
@@ -137,7 +137,7 @@
       <td align="center">🚧</td>
     </tr>
     <tr>
-      <td rowspan="16" align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
+      <td rowspan="16" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/6538815d1bdb3c40db94fbfa/xMBly9PUMphrFVMxLX4kq.png" height="40"/><br/>DeepSeek</td>
       <td rowspan="2">DeepSeek-V4</td>
       <td>vLLM</td>
       <td align="center">🚧</td>
@@ -242,7 +242,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="6" align="center"><img src="https://github.com/meta-llama.png?size=64" height="40"/><br/>Meta</td>
+      <td rowspan="6" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/646cf8084eefb026fb8fd8bc/oCTqufkdTkjyGodsx1vo1.png" height="40"/><br/>Meta Llama</td>
       <td rowspan="2">Llama 4</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -282,7 +282,7 @@
       <td align="center">🚧</td>
     </tr>
     <tr>
-      <td rowspan="20" align="center"><img src="https://github.com/THUDM.png?size=64" height="40"/><br/>Zhipu AI</td>
+      <td rowspan="20" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/63033dc4e1e7f0e03a5e1a31/0BibmRdezvN6v6d2CEtd5.png" height="40"/><br/>THUDM</td>
       <td rowspan="2">GLM-OCR</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -413,35 +413,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/google.png?size=64" height="40"/><br/>Google</td>
-      <td rowspan="2">Gemma 4</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/openai.png?size=64" height="40"/><br/>OpenAI</td>
-      <td rowspan="2">GPT-OSS</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="8" align="center"><img src="https://github.com/MoonshotAI.png?size=64" height="40"/><br/>Moonshot AI</td>
+      <td rowspan="8" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/641c1e77c3983aa9490f8121/X1yT2rsaIbR9cdYGEVu0X.jpeg" height="40"/><br/>Moonshot AI</td>
       <td rowspan="2">Kimi-Linear</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -494,7 +466,7 @@
       <td align="center"><a href="docs/model-deployment/sglang/kimi-k2.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="6" align="center"><img src="https://github.com/MiniMax-AI.png?size=64" height="40"/><br/>MiniMax</td>
+      <td rowspan="6" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/676e38ad04af5bec20bc9faf/dUd-LsZEX0H_d4qefO_g6.jpeg" height="40"/><br/>MiniMax</td>
       <td rowspan="2">MiniMax-M2.7</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -534,74 +506,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="6" align="center"><img src="https://github.com/NVIDIA.png?size=64" height="40"/><br/>NVIDIA</td>
-      <td rowspan="2">Nemotron3-Super</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Nemotron3-Nano-Omni</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Nemotron3-Nano</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="4" align="center"><img src="https://github.com/PaddlePaddle.png?size=64" height="40"/><br/>Baidu</td>
-      <td rowspan="2">Ernie4.5-VL</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Ernie4.5</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="4" align="center"><img src="https://github.com/stepfun-ai.png?size=64" height="40"/><br/>StepFun</td>
+      <td rowspan="4" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/644f7e6233ac8f46fa0b9e26/CmF2ocXhkr2UtHXgmwq7-.png" height="40"/><br/>StepFun</td>
       <td rowspan="2">Step-3.5</td>
       <td>vLLM</td>
       <td align="center">🚧</td>
@@ -628,7 +533,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="8" align="center"><img src="https://github.com/InclusionAI.png?size=64" height="40"/><br/>InclusionAI</td>
+      <td rowspan="8" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/662e1f9da266499277937d33/fyKuazRifqiaIO34xrhhm.jpeg" height="40"/><br/>inclusionAI</td>
       <td rowspan="2">Ring-2.5-1T</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -681,129 +586,7 @@
       <td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="4" align="center"><img src="https://github.com/InternLM.png?size=64" height="40"/><br/>InternLM</td>
-      <td rowspan="2">Intern-S2-Preview</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Intern-S1</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/OpenGVLab.png?size=64" height="40"/><br/>InternVL</td>
-      <td rowspan="2">InternVL3.5</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/OpenBMB.png?size=64" height="40"/><br/>OpenBMB</td>
-      <td rowspan="2">MiniCPM-V 4.6</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/jina-ai.png?size=64" height="40"/><br/>Jina AI</td>
-      <td rowspan="2">Jina-reranker-m0</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="8" align="center"><img src="https://github.com/mistralai.png?size=64" height="40"/><br/>Mistral AI</td>
-      <td rowspan="2">Mistral Small 4</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Mistral Medium 3.5</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Ministral-3</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Devstral 2</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="4" align="center"><img src="https://github.com/XiaoMi.png?size=64" height="40"/><br/>Xiaomi</td>
+      <td rowspan="4" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/680cb7d1233834890a64acee/5w_4aLfF-7MAyaIPOV498.jpeg" height="40"/><br/>Xiaomi MiMo</td>
       <td rowspan="2">MiMo-V2.5</td>
       <td>vLLM</td>
       <td align="center">-</td>
@@ -828,20 +611,6 @@
       <td align="center">-</td>
       <td align="center">-</td>
       <td align="center"><a href="docs/model-deployment/sglang/mimo-v2-flash.md">✅</a></td>
-    </tr>
-    <tr>
-      <td rowspan="2" align="center"><img src="https://github.com/flashlabs-ai.png?size=64" height="40"/><br/>FlashLabs</td>
-      <td rowspan="2">Chroma-1.0</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
     </tr>
   </tbody>
 </table>
