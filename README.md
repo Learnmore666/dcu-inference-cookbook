@@ -80,11 +80,11 @@
     <tr>
       <td rowspan="2">Qwen3-Coder</td>
       <td>vLLM</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
+      <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
+      <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">Qwen3</td>
@@ -105,7 +105,7 @@
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
     <tr>
-      <td rowspan="16" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/6538815d1bdb3c40db94fbfa/xMBly9PUMphrFVMxLX4kq.png" height="40"/><br/>DeepSeek</td>
+      <td rowspan="10" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/6538815d1bdb3c40db94fbfa/xMBly9PUMphrFVMxLX4kq.png" height="40"/><br/>DeepSeek</td>
       <td rowspan="2">DeepSeek-V4</td>
       <td>vLLM</td>
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
@@ -149,33 +149,6 @@
     <tr>
       <td>SGLang</td>
       <td align="center">-</td><td align="center">-</td><td align="center"><a href="docs/model-deployment/sglang/deepseek-r1.md">✅</a></td>
-    </tr>
-    <tr>
-      <td rowspan="2">DeepSeek-OCR-2</td>
-      <td>vLLM</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">DeepSeek-OCR</td>
-      <td>vLLM</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">DeepSeek-Math-V2</td>
-      <td>vLLM</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
     </tr>
     <tr>
       <td rowspan="6" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/646cf8084eefb026fb8fd8bc/oCTqufkdTkjyGodsx1vo1.png" height="40"/><br/>Meta Llama</td>
@@ -270,16 +243,7 @@
       <td align="center">-</td><td align="center">-</td><td align="center">-</td>
     </tr>
     <tr>
-      <td rowspan="8" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/641c1e77c3983aa9490f8121/X1yT2rsaIbR9cdYGEVu0X.jpeg" height="40"/><br/>Moonshot AI</td>
-      <td rowspan="2">Kimi-Linear</td>
-      <td>vLLM</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
+      <td rowspan="6" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/641c1e77c3983aa9490f8121/X1yT2rsaIbR9cdYGEVu0X.jpeg" height="40"/><br/>Moonshot AI</td>
       <td rowspan="2">Kimi-K2.6</td>
       <td>vLLM</td>
       <td align="center">-</td><td align="center">-</td><td align="center">-</td>
@@ -346,7 +310,7 @@
     </tr>
     <tr>
       <td rowspan="2" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/662e1f9da266499277937d33/fyKuazRifqiaIO34xrhhm.jpeg" height="40"/><br/>inclusionAI</td>
-      <td rowspan="2">Ling-2.5-1T</td>
+      <td rowspan="2">Ling-1T</td>
       <td>vLLM</td>
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
