@@ -35,15 +35,15 @@
       <td rowspan="16" align="center"><img src="https://github.com/QwenLM.png?size=64" height="40"/><br/>Alibaba</td>
       <td rowspan="2">Qwen3.6</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">Qwen3.5</td>
@@ -61,15 +61,15 @@
     <tr>
       <td rowspan="2">Qwen3-VL</td>
       <td>vLLM</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
       <td align="center"><a href="docs/model-deployment/vllm/qwen3-vl.md">✅</a></td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">Qwen3-Next</td>
@@ -126,29 +126,29 @@
     <tr>
       <td rowspan="2">Qwen2.5-VL</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="16" align="center"><img src="https://github.com/deepseek-ai.png?size=64" height="40"/><br/>DeepSeek</td>
       <td rowspan="2">DeepSeek-V4</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">DeepSeek-V3.2</td>
@@ -166,15 +166,15 @@
     <tr>
       <td rowspan="2">DeepSeek-V3.1</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">DeepSeek-V3</td>
@@ -258,28 +258,28 @@
     <tr>
       <td rowspan="2">Llama-3.3-70B</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">Llama-3.1</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="20" align="center"><img src="https://github.com/THUDM.png?size=64" height="40"/><br/>Zhipu AI</td>
@@ -311,15 +311,15 @@
     <tr>
       <td rowspan="2">GLM-5.1</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">GLM-5</td>
@@ -350,15 +350,15 @@
     <tr>
       <td rowspan="2">GLM-4.7</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">GLM-4.6V</td>
@@ -389,15 +389,15 @@
     <tr>
       <td rowspan="2">GLM-4.5V</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">GLM-4.5</td>
@@ -604,15 +604,15 @@
       <td rowspan="4" align="center"><img src="https://github.com/stepfun-ai.png?size=64" height="40"/><br/>StepFun</td>
       <td rowspan="2">Step-3.5</td>
       <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
-      <td align="center">-</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
+      <td align="center">🚧</td>
     </tr>
     <tr>
       <td rowspan="2">Step3-VL-10B</td>
