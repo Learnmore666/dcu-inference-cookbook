@@ -32,7 +32,7 @@
   </tr>
   <tbody>
     <tr>
-      <td rowspan="16" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/620760a26e3b7210c2ff1943/-s1gyJfvbE1RgO5iBeNOi.png" height="40"/><br/>Qwen</td>
+      <td rowspan="18" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/620760a26e3b7210c2ff1943/-s1gyJfvbE1RgO5iBeNOi.png" height="40"/><br/>Qwen</td>
       <td rowspan="2">Qwen3.6</td>
       <td>vLLM</td>
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
@@ -105,6 +105,15 @@
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
     <tr>
+      <td rowspan="2">QwQ</td>
+      <td>vLLM</td>
+      <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
+    </tr>
+    <tr>
+      <td>SGLang</td>
+      <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
+    </tr>
+    <tr>
       <td rowspan="10" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/6538815d1bdb3c40db94fbfa/xMBly9PUMphrFVMxLX4kq.png" height="40"/><br/>DeepSeek</td>
       <td rowspan="2">DeepSeek-V4</td>
       <td>vLLM</td>
@@ -151,17 +160,8 @@
       <td align="center">-</td><td align="center">-</td><td align="center"><a href="docs/model-deployment/sglang/deepseek-r1.md">✅</a></td>
     </tr>
     <tr>
-      <td rowspan="6" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/646cf8084eefb026fb8fd8bc/oCTqufkdTkjyGodsx1vo1.png" height="40"/><br/>Meta Llama</td>
-      <td rowspan="2">Llama 4</td>
-      <td>vLLM</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td><td align="center">-</td><td align="center">-</td>
-    </tr>
-    <tr>
-      <td rowspan="2">Llama-3.3-70B</td>
+      <td rowspan="4" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/646cf8084eefb026fb8fd8bc/oCTqufkdTkjyGodsx1vo1.png" height="40"/><br/>Meta Llama</td>
+      <td rowspan="2">Llama-3.3</td>
       <td>vLLM</td>
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
