@@ -61,9 +61,7 @@ python3 -m sglang.launch_server \
     --model-path hygon/DeepSeek-V3.2-Channel-FP8-w8a8 \
     --numa-node 0 0 1 1 2 2 3 3 \
     --disable-radix-cache \
-    --chunked-prefill-size -1 \
-    --max-running-requests 256 \
-    --speculative-algorithm EAGLE --speculative-num-steps 2  --speculative-eagle-topk 1  --speculative-num-draft-tokens 1 \
+    --page-size 64 \
     --context-length 65536 \
     --quantization w8a8_fp8 \
     --kv-cache-dtype fp8_e4m3 \
@@ -80,6 +78,9 @@ python3 -m sglang.launch_server \
 
 ```
 
+> BW1100 + `sglang-0.5.10-202604282004-rc2` 组合下，`--kv-cache-dtype fp8_e4m3` 需显式设置 `--page-size 64`。  
+> 同时建议先关闭 `--chunked-prefill-size`、`--max-running-requests` 与 EAGLE 推测解码参数，避免启动阶段报错。
+
 ## curl 调用
 
 ```bash
@@ -94,4 +95,3 @@ curl http://localhost:30000/v1/chat/completions \
     ]
   }'
 ```
-
