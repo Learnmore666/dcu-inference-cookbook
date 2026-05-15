@@ -114,7 +114,7 @@
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
     <tr>
-      <td rowspan="10" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/6538815d1bdb3c40db94fbfa/xMBly9PUMphrFVMxLX4kq.png" height="40"/><br/>DeepSeek</td>
+      <td rowspan="13" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/6538815d1bdb3c40db94fbfa/xMBly9PUMphrFVMxLX4kq.png" height="40"/><br/>DeepSeek</td>
       <td rowspan="2">DeepSeek-V4</td>
       <td>vLLM</td>
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
@@ -142,26 +142,6 @@
       <td align="center">🚧</td><td align="center">🚧</td><td align="center">🚧</td>
     </tr>
     <tr>
-      <td rowspan="2">DeepSeek-R1-Distill-Qwen-32B</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-qwen-32b.md">✅</a></td>
-      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-qwen-32b.md">✅</a></td>
-    </tr>
-    <tr>
-      <td>SGLang</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/sglang/deepseek-r1-distill-qwen-32b.md">✅</a></td>
-      <td align="center"><a href="docs/model-deployment/sglang/deepseek-r1-distill-qwen-32b.md">✅</a></td>
-    </tr>
-    <tr>
-      <td>DeepSeek-R1-Distill-Llama-70B</td>
-      <td>vLLM</td>
-      <td align="center">-</td>
-      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-llama-70b.md">✅</a></td>
-      <td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-llama-70b.md">✅</a></td>
-    </tr>
-    <tr>
       <td rowspan="2">DeepSeek-V3</td>
       <td>vLLM</td>
       <td align="center">-</td><td align="center">-</td><td align="center"><a href="docs/model-deployment/vllm/deepseek-v3.md">✅</a></td>
@@ -178,6 +158,20 @@
     <tr>
       <td>SGLang</td>
       <td align="center">-</td><td align="center">-</td><td align="center"><a href="docs/model-deployment/sglang/deepseek-r1.md">✅</a></td>
+    </tr>
+    <tr>
+      <td rowspan="2">DeepSeek-R1-Distill-Qwen-32B</td>
+      <td>vLLM</td>
+      <td align="center">-</td><td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-qwen-32b.md">✅</a></td><td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-qwen-32b.md">✅</a></td>
+    </tr>
+    <tr>
+      <td>SGLang</td>
+      <td align="center">-</td><td align="center"><a href="docs/model-deployment/sglang/deepseek-r1-distill-qwen-32b.md">✅</a></td><td align="center"><a href="docs/model-deployment/sglang/deepseek-r1-distill-qwen-32b.md">✅</a></td>
+    </tr>
+    <tr>
+      <td>DeepSeek-R1-Distill-Llama-70B</td>
+      <td>vLLM</td>
+      <td align="center">-</td><td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-llama-70b.md">✅</a></td><td align="center"><a href="docs/model-deployment/vllm/deepseek-r1-distill-llama-70b.md">✅</a></td>
     </tr>
     <tr>
       <td rowspan="4" align="center"><img src="https://cdn-avatars.huggingface.co/v1/production/uploads/646cf8084eefb026fb8fd8bc/oCTqufkdTkjyGodsx1vo1.png" height="40"/><br/>Meta Llama</td>
