@@ -402,7 +402,7 @@ sglang serve \
   --disaggregation-mode decode
 ```
 
-#### SGLang-Router
+#### Router
 
 `--prefill` 填写 P 节点 HTTP 服务地址，`--decode` 填写 D 节点 HTTP 服务地址。这里的 `30000` 是 SGLang 服务端口，不是 `--dist-init-addr` 使用的 `5000`；`--port 30005` 是 Router 对外服务端口。
 
@@ -711,7 +711,7 @@ sglang serve \
   --disaggregation-ib-device mlx5_2,mlx5_3,mlx5_4,mlx5_5,mlx5_6,mlx5_7,mlx5_8,mlx5_9
 ```
 
-#### SGLang-Router
+#### Router
 
 `--prefill` 填写 P 节点 HTTP 服务地址，`--decode` 填写 D 节点 HTTP 服务地址。这里的 `30000` 是 SGLang 服务端口，不是 `--dist-init-addr` 使用的 `5000`；`--port 30005` 是 Router 对外服务端口。
 
