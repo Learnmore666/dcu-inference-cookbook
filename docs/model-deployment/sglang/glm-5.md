@@ -657,17 +657,14 @@ sglang serve \
 
 #### Router
 
-`--prefill` 填写 P 节点 HTTP 服务地址，`--decode` 填写 D 节点 HTTP 服务地址。这里的 `30000` 是 SGLang 服务端口，不是 `--dist-init-addr` 使用的 `5000`；`--port 30005` 是 Router 对外服务端口。
-
 ```bash
 python3 -m sglang_router.launch_router \
   --pd-disaggregation \
   --prefill http://10.16.1.36:30000 \
   --decode http://10.16.1.46:30000 \
   --policy cache_aware \
-  --port 30005
+  --port 30001
 ```
-
 
 ### GLM-5-Channel-FP8-w8a8 IFB BW1100 8x
 
@@ -679,13 +676,15 @@ python3 -m sglang_router.launch_router \
 
 ## API 调用
 
+### IFB
+
 ```python
 from openai import OpenAI
 
 client = OpenAI(base_url="http://localhost:30000/v1", api_key="not-needed")
 
 response = client.chat.completions.create(
-    model="THUDM/GLM-5-9B",
+    model="hygon/GLM-5-Channel-INT4-w4a8",  # 替换为实际使用的模型名
     messages=[
         {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
         {"role": "user", "content": "请分析一下当前中国 AI 芯片产业的发展现状"},
@@ -695,13 +694,44 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-## curl 调用
-
 ```bash
 curl http://localhost:30000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "THUDM/GLM-5-9B",
+    "model": "hygon/GLM-5-Channel-INT4-w4a8",
+    "messages": [
+      {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
+      {"role": "user", "content": "中国的首都是哪里？"}
+    ],
+    "max_tokens": 128
+  }'
+```
+
+### PD 分离
+
+PD 分离模式下，客户端请求发送到 SGLang Router，而非直接发送到 P/D 节点。Router 默认端口为 `30000`，若与 P node 0 部署在同一机器上需指定其他端口（示例中为 `30005`）。
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://<router_ip>:30005/v1", api_key="not-needed")
+
+response = client.chat.completions.create(
+    model="hygon/GLM-5-Channel-INT4-w4a8",  # 替换为实际使用的模型名
+    messages=[
+        {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
+        {"role": "user", "content": "请分析一下当前中国 AI 芯片产业的发展现状"},
+    ],
+    max_tokens=2048,
+)
+print(response.choices[0].message.content)
+```
+
+```bash
+curl http://<router_ip>:30005/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "hygon/GLM-5-Channel-INT4-w4a8",
     "messages": [
       {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
       {"role": "user", "content": "中国的首都是哪里？"}
