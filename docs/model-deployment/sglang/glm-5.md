@@ -8,18 +8,16 @@ GLM-5 是智谱 AI 推出的新一代大语言模型，在中文理解、长文�
 
 | 模型权重 | 量化方式 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
 | -------- | -------- | -------- | ---- | -------- | -------- |
-| [hygon/GLM-5-Channel-INT4-w4a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT4-w4a8) | INT4 W4A8 | BW1000 |  8 | IFB | [**`>_`**](#w4a8-ifb) |
-|                                                                                                   | INT4 W4A8 | BW1000 | 32 | PD  | [**`>_`**](#w4a8-pd)  |
-| [hygon/GLM-5-Channel-INT8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT8-w8a8) | INT8 W8A8 | BW1100 |  8 | IFB | [**`>_`**](#w8a8-ifb) |
-|                                                                                                   | INT8 W8A8 | BW1100 | 24 | PD  | [**`>_`**](#w8a8-pd)  |
-| [hygon/GLM-5-Channel-FP8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-FP8-w8a8)   |  FP8 W8A8 | BW1100 |  8 | IFB | [**`>_`**](#fp8-ifb)   |
-|                                                                                                   |  FP8 W8A8 | BW1100 | 24 | PD  | [**`>_`**](#fp8-pd)    |
+| [hygon/GLM-5-Channel-INT4-w4a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT4-w4a8) | INT4 W4A8 | BW1000 |  8 | IFB | [**`>_`**](#hygonglm-5-channel-int4-w4a8-ifb-bw1000-8x) |
+|                                                                                                   | INT4 W4A8 | BW1000 | 32 | PD  | [**`>_`**](#hygonglm-5-channel-int4-w4a8-pd-bw1000-32x)  |
+| [hygon/GLM-5-Channel-INT8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT8-w8a8) | INT8 W8A8 | BW1100 |  8 | IFB | [**`>_`**](#hygonglm-5-channel-int8-w8a8-ifb-bw1100-8x) |
+|                                                                                                   | INT8 W8A8 | BW1100 | 24 | PD  | [**`>_`**](#hygonglm-5-channel-int8-w8a8-pd-bw1100-24x)  |
+| [hygon/GLM-5-Channel-FP8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-FP8-w8a8)   |  FP8 W8A8 | BW1100 |  8 | IFB | [**`>_`**](#hygonglm-5-channel-fp8-w8a8-ifb-bw1100-8x)   |
+|                                                                                                   |  FP8 W8A8 | BW1100 | 24 | PD  | [**`>_`**](#hygonglm-5-channel-fp8-w8a8-pd-bw1100-24x)    |
 
 ## 启动命令
 
-<a id="w4a8-ifb"></a>
-
-### hygon/GLM-5-Channel-INT4-w4a8 · INT4 W4A8 · IFB · 8卡 · BW1000
+### hygon/GLM-5-Channel-INT4-w4a8 IFB BW1000 8x
 
 ```bash
 export NCCL_MIN_NCHANNELS=16
@@ -77,9 +75,7 @@ sglang serve \
 ```
 
 
-<a id="w4a8-pd"></a>
-
-### hygon/GLM-5-Channel-INT4-w4a8 · INT4 W4A8 · PD 分离 · 32卡 · BW1000
+### hygon/GLM-5-Channel-INT4-w4a8 PD BW1000 32x
 
 网卡配置参考：[IB 网卡](../../troubleshooting/common-issues.md#ib网卡)。
 
@@ -424,9 +420,7 @@ python3 -m sglang_router.launch_router \
 ```
 
 
-<a id="w8a8-ifb"></a>
-
-### hygon/GLM-5-Channel-INT8-w8a8 · INT8 W8A8 · IFB · 8卡 · BW1100
+### hygon/GLM-5-Channel-INT8-w8a8 IFB BW1100 8x
 
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
@@ -471,9 +465,7 @@ sglang serve \
 ```
 
 
-<a id="w8a8-pd"></a>
-
-### hygon/GLM-5-Channel-INT8-w8a8 · INT8 W8A8 · PD 分离 · 24卡 · BW1100
+### hygon/GLM-5-Channel-INT8-w8a8 PD BW1100 24x
 
 网卡配置参考：[IB 网卡](../../troubleshooting/common-issues.md#ib网卡)。
 
@@ -739,15 +731,11 @@ python3 -m sglang_router.launch_router \
 ```
 
 
-<a id="fp8-ifb"></a>
-
-### hygon/GLM-5-Channel-FP8-w8a8 · FP8 W8A8 · IFB · 8卡 · BW1100
+### hygon/GLM-5-Channel-FP8-w8a8 IFB BW1100 8x
 
 同上 INT8 W8A8 IFB。
 
-<a id="fp8-pd"></a>
-
-### hygon/GLM-5-Channel-FP8-w8a8 · FP8 W8A8 · PD 分离 · 24卡 · BW1100
+### hygon/GLM-5-Channel-FP8-w8a8 PD BW1100 24x
 
 同上 INT8 W8A8 PD 分离。
 
