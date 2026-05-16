@@ -56,7 +56,7 @@
 | Qwen3 | 0.6B ~ 235B | LLM | ✅ | ✅ |
 | Qwen3.5 | 7B ~ 72B+ | LLM | ✅ | ✅ |
 | DeepSeek-R1-Distill-Qwen-32B | 32B | LLM | ✅ | ✅ |
-| DeepSeek-R1-Distill-Llama-70B | 70B | LLM | ✅ | ❌ |
+| DeepSeek-R1-Distill-Llama-70B | 70B | LLM | ✅ | ✅ |
 | GLM-5 | 9B ~ 130B+ | LLM | ✅ | ✅ |
 | Kimi-K2 | 1.5B ~ 72B | LLM | ✅ | ✅ |
 | MiniMax-2.x | 456B (MoE) | LLM | ✅ | ✅ |
