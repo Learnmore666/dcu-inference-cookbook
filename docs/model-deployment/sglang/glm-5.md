@@ -112,21 +112,13 @@ export SGLANG_ROCM_USE_AITER_MOE=0
 export HIP_GRAPH_ACCUMULATE_DISPATCH=1
 export HIP_GRAPH_USE_CMD_CACHE=0
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="${HOST}"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT4-w4a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\'):5000" \
   --nnodes 2 \
   --node-rank 0 \
   --tp-size 8 \
@@ -151,7 +143,7 @@ sglang serve \
 
 #### P node 1
 
-说明：node1 的 `MASTER_IP` 需要填写当前分组 node0 的 `HOST`/IP，确保 `DIST_INIT_ADDR` 指向 node0。下面示例使用 `MASTER_IP="10.16.1.36"`。
+说明：`--dist-init-addr` 填写当前分组 node0 的 IP，下面示例使用 `10.16.1.36`。
 
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
@@ -185,21 +177,13 @@ export SGLANG_ROCM_USE_AITER_MOE=0
 export HIP_GRAPH_ACCUMULATE_DISPATCH=1
 export HIP_GRAPH_USE_CMD_CACHE=0
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="10.16.1.36"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT4-w4a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "10.16.1.36:5000" \
   --nnodes 2 \
   --node-rank 1 \
   --tp-size 8 \
@@ -262,21 +246,13 @@ export MC_ENABLE_DEST_DEVICE_AFFINITY=1
 export MC_GID_INDEX=3
 export SGLANG_USE_MODELSCOPE=1
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="${HOST}"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT4-w4a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\'):5000" \
   --nnodes 2 \
   --node-rank 0 \
   --tp-size 16 \
@@ -313,7 +289,7 @@ sglang serve \
 
 #### D node 1
 
-说明：node1 的 `MASTER_IP` 需要填写当前分组 node0 的 `HOST`/IP，确保 `DIST_INIT_ADDR` 指向 node0。下面示例使用 `MASTER_IP="10.16.1.46"`。
+说明：`--dist-init-addr` 填写当前分组 node0 的 IP，下面示例使用 `10.16.1.46`。
 
 ```bash
 export NCCL_MIN_NCHANNELS=16
@@ -353,21 +329,13 @@ export MC_ENABLE_DEST_DEVICE_AFFINITY=1
 export MC_GID_INDEX=3
 export SGLANG_USE_MODELSCOPE=1
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="10.16.1.46"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT4-w4a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "10.16.1.46:5000" \
   --nnodes 2 \
   --node-rank 1 \
   --tp-size 16 \
@@ -496,21 +464,13 @@ export ALLREDUCE_STREAM_WITH_COMPUTE=1
 export SGLANG_USE_LIGHTOP=1
 export SGLANG_ROCM_USE_AITER_MOE=0
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="${HOST}"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT8-w8a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\'):5000" \
   --tp-size 8 \
   --pp-size 1 \
   --attn-cp-size 8 \
@@ -571,21 +531,13 @@ export GLOO_SOCKET_IFNAME=enp33s0f3u1
 export ROCBLAS_TENSILE_LIBPATH=/home/library_gpu6_glm5_int8
 export SGLANG_USE_MODELSCOPE=1
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="${HOST}"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT8-w8a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\'):5000" \
   --nnodes 2 \
   --node-rank 0 \
   --tp-size 16 \
@@ -620,7 +572,7 @@ sglang serve \
 
 #### D node 1
 
-说明：node1 的 `MASTER_IP` 需要填写当前分组 node0 的 `HOST`/IP，确保 `DIST_INIT_ADDR` 指向 node0。下面示例使用 `MASTER_IP="10.16.1.46"`。
+说明：`--dist-init-addr` 填写当前分组 node0 的 IP，下面示例使用 `10.16.1.46`。
 
 ```bash
 export NCCL_MIN_NCHANNELS=16
@@ -664,21 +616,13 @@ export GLOO_SOCKET_IFNAME=enp33s0f3u1
 export ROCBLAS_TENSILE_LIBPATH=/home/library_gpu6_glm5_int8
 export SGLANG_USE_MODELSCOPE=1
 
-HOST=$(hostname -I 2>/dev/null | awk '{print $1}')
-if [ -z "${HOST}" ]; then
-  HOST=$(hostname -i 2>/dev/null | awk '{print $1}')
-fi
-PORT="30000"
-MASTER_IP="10.16.1.46"
-DIST_PORT="5000"
-DIST_INIT_ADDR="${MASTER_IP}:${DIST_PORT}"
 
 sglang serve \
   --model-path hygon/GLM-5-Channel-INT8-w8a8 \
   --trust-remote-code \
-  --host "${HOST}" \
-  --port "${PORT}" \
-  --dist-init-addr "${DIST_INIT_ADDR}" \
+  --host "$(ip route get 1.1.1.1 | awk \'/src/{print $7}\')" \
+  --port 30000 \
+  --dist-init-addr "10.16.1.46:5000" \
   --nnodes 2 \
   --node-rank 1 \
   --tp-size 16 \
