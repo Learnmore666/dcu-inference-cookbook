@@ -1,0 +1,96 @@
+# Llama-3.3-70B on vLLM
+
+## 模型简介
+
+Llama 3.3 是 Meta 推出的开源大语言模型，70B 版本支持 128K 上下文、多语言能力，适合多语言问答、代码生成等场景。
+
+## 模型列表
+
+| 模型权重 | 量化方式 | vLLM 版本 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
+| -------- | -------- | --------- | -------- | ---- | -------- | -------- |
+| [LLM-Research/Llama-3.3-70B-Instruct](https://www.modelscope.cn/models/LLM-Research/Llama-3.3-70B-Instruct) | BF16 | 0.18.0 | K100_AI |  8 | IFB | [**`>_`**](#llama-33-70b-instruct-ifb-k100_ai-8x) |
+|                                                                                                               | BF16 | 0.18.0 | BW1000  |  4 | IFB | [**`>_`**](#llama-33-70b-instruct-ifb-bw1000-4x)  |
+|                                                                                                               | BF16 | 0.18.0 | BW1100  |  2 | IFB | [**`>_`**](#llama-33-70b-instruct-ifb-bw1100-2x)  |
+
+## 启动命令
+
+### Llama-3.3-70B-Instruct IFB K100_AI 8x
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+
+vllm serve LLM-Research/Llama-3.3-70B-Instruct \
+    --trust-remote-code \
+    --dtype bfloat16 \
+    -tp 8 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.90 \
+    --disable-log-requests \
+    --enable-prefix-caching \
+    --kv-cache-dtype fp8_e4m3
+```
+
+### Llama-3.3-70B-Instruct IFB BW1000 4x
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+
+vllm serve LLM-Research/Llama-3.3-70B-Instruct \
+    --trust-remote-code \
+    --dtype bfloat16 \
+    -tp 4 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.90 \
+    --disable-log-requests \
+    --enable-prefix-caching \
+    --kv-cache-dtype fp8_e4m3
+```
+
+### Llama-3.3-70B-Instruct IFB BW1100 2x
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+
+vllm serve LLM-Research/Llama-3.3-70B-Instruct \
+    --trust-remote-code \
+    --dtype bfloat16 \
+    -tp 2 \
+    --max-model-len 32768 \
+    --gpu-memory-utilization 0.90 \
+    --disable-log-requests \
+    --enable-prefix-caching \
+    --kv-cache-dtype fp8_e4m3
+```
+
+## API 调用
+
+### IFB
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:8000/v1", api_key="not-needed")
+
+response = client.chat.completions.create(
+    model="LLM-Research/Llama-3.3-70B-Instruct",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is the capital of France?"},
+    ],
+    max_tokens=2048,
+)
+print(response.choices[0].message.content)
+```
+
+```bash
+curl http://localhost:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "LLM-Research/Llama-3.3-70B-Instruct",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user", "content": "What is the capital of France?"}
+    ],
+    "max_tokens": 128
+  }'
+```

@@ -19,6 +19,7 @@ pip install vllm
 | Qwen3 | 0.6B ~ 235B | [qwen3.md](qwen3.md) |
 | Qwen3.5 | 7B ~ 72B+ | [qwen3.5.md](qwen3.5.md) |
 | GLM-5 | 9B ~ 130B+ | [glm-5.md](glm-5.md) |
+| Llama-3.3 | 70B | [llama3.3-70b.md](llama3.3-70b.md) |
 | Kimi-K2 | 1.5B ~ 72B | [kimi-k2.md](kimi-k2.md) |
 | MiniMax-2.x | 456B (MoE) | [minimax-2.x.md](minimax-2.x.md) |
 
