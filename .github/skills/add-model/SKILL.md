@@ -14,10 +14,14 @@ description: Guide for adding a new model deployment doc to dcu-inference-cookbo
 
 ### 各列说明
 
-- **模型权重**：ModelScope 上 hygon 量化的 channelwise 模型名称，带链接。格式：
-  `[hygon/<MODEL-NAME>](https://www.modelscope.cn/models/hygon/<MODEL-NAME>)`
-  例如：`[hygon/GLM-5-Channel-INT4-w4a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT4-w4a8)`
-  同一模型的多个行，后续行的模型权重列留空（用空格对齐）。
+- **模型权重**：模型在 ModelScope 上的完整路径，带链接。
+  - 有 HYGON 量化版本时，优先使用 `hygon/` 前缀的 channelwise 模型：
+    `[hygon/<MODEL-NAME>](https://www.modelscope.cn/models/hygon/<MODEL-NAME>)`
+    例如：`[hygon/GLM-5-Channel-INT4-w4a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT4-w4a8)`
+  - 无 HYGON 量化版本时（如 BF16 部署），使用上游原始模型 ID：
+    例如：`[Qwen/Qwen3-235B-A22B](https://www.modelscope.cn/models/Qwen/Qwen3-235B-A22B)`
+    或：`[moonshotai/Kimi-K2-Instruct](https://www.modelscope.cn/models/moonshotai/Kimi-K2-Instruct)`
+  - 同一模型的多个行，后续行的模型权重列留空（用空格对齐）。
 
 - **量化方式**：使用标准格式，例如：`INT4 W4A8`、`INT8 W8A8`、`FP8 W8A8`、`BF16`。
 
@@ -59,7 +63,7 @@ description: Guide for adding a new model deployment doc to dcu-inference-cookbo
 
 IFB 章节只有一个 bash 代码块，无需子标题：
 
-```markdown
+````markdown
 ### GLM-5-Channel-INT4-w4a8 IFB BW1000 8x
 
 ```bash
@@ -71,13 +75,13 @@ sglang serve \
   --tp-size 8 \
   ...
 ```
-```
+````
 
 ### PD 分离章节结构
 
 PD 分离章节开头加一行 IB 网卡配置说明，然后用 `####` 划分各节点：
 
-```markdown
+````markdown
 ### GLM-5-Channel-INT4-w4a8 2P2D BW1000 32x
 
 网卡配置参考：[IB 网卡](../../troubleshooting/common-issues.md#ib网卡)。
@@ -132,7 +136,7 @@ python3 -m sglang_router.launch_router \
   --policy cache_aware \
   --port 30005
 ```
-```
+````
 
 ## 模型相关说明
 
@@ -148,7 +152,7 @@ python3 -m sglang_router.launch_router \
 
 `## API 调用` 章节分两个子节：
 
-```markdown
+````markdown
 ## API 调用
 
 ### IFB
@@ -181,11 +185,11 @@ client = OpenAI(base_url="http://<router_ip>:30005/v1", api_key="not-needed")
 ```bash
 curl http://<router_ip>:30005/v1/chat/completions ...
 ```
-```
+````
 
 ## 示例（SGLang GLM-5）
 
-```markdown
+````markdown
 ## 模型列表
 
 | 模型权重 | 量化方式 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
@@ -196,4 +200,4 @@ curl http://<router_ip>:30005/v1/chat/completions ...
 |                                                                                                 | INT8 W8A8 | BW1100 | 24 | 1P2D | [**`>_`**](#glm-5-channel-int8-w8a8-1p2d-bw1100-24x) |
 | [hygon/GLM-5-Channel-FP8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-FP8-w8a8)   |  FP8 W8A8 | BW1100 |  8 | IFB  | [**`>_`**](#glm-5-channel-fp8-w8a8-ifb-bw1100-8x)    |
 |                                                                                                 |  FP8 W8A8 | BW1100 | 24 | 1P2D | [**`>_`**](#glm-5-channel-fp8-w8a8-1p2d-bw1100-24x)  |
-```
+````
