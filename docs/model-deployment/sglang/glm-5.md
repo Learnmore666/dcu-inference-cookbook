@@ -367,8 +367,6 @@ sglang serve \
 
 #### Router
 
-`--prefill` 填写 P 节点 HTTP 服务地址，`--decode` 填写 D 节点 HTTP 服务地址。这里的 `30000` 是 SGLang 服务端口，不是 `--dist-init-addr` 使用的 `5000`；`--port 30005` 是 Router 对外服务端口。
-
 ```bash
 python3 -m sglang_router.launch_router \
   --pd-disaggregation \
