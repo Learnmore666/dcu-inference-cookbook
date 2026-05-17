@@ -373,7 +373,7 @@ python3 -m sglang_router.launch_router \
   --prefill http://10.16.1.36:30000 \
   --decode http://10.16.1.46:30000 \
   --policy cache_aware \
-  --port 30005
+  --port 30001
 ```
 
 ### GLM-5-Channel-INT8-w8a8 IFB BW1100 8x
@@ -967,12 +967,12 @@ curl http://localhost:30000/v1/chat/completions \
 
 ### PD 分离
 
-PD 分离模式下，客户端请求发送到 SGLang Router，而非直接发送到 P/D 节点。Router 默认端口为 `30000`，若与 P node 0 部署在同一机器上需指定其他端口（示例中为 `30005`）。
+PD 分离模式下，客户端请求发送到 SGLang Router，而非直接发送到 P/D 节点。Router 默认端口为 `30000`，若与 P node 0 部署在同一机器上需指定其他端口（示例中为 `30001`）。
 
 ```python
 from openai import OpenAI
 
-client = OpenAI(base_url="http://<router_ip>:30005/v1", api_key="not-needed")
+client = OpenAI(base_url="http://<router_ip>:30001/v1", api_key="not-needed")
 
 response = client.chat.completions.create(
     model="hygon/GLM-5-Channel-INT4-w4a8",  # 替换为实际使用的模型名
@@ -986,7 +986,7 @@ print(response.choices[0].message.content)
 ```
 
 ```bash
-curl http://<router_ip>:30005/v1/chat/completions \
+curl http://<router_ip>:30001/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "hygon/GLM-5-Channel-INT4-w4a8",
