@@ -21,6 +21,7 @@ pip install vllm
 | GLM-5 | 9B ~ 130B+ | [glm-5.md](glm-5.md) |
 | Kimi-K2 | 1.5B ~ 72B | [kimi-k2.md](kimi-k2.md) |
 | MiniMax-2.x | 456B (MoE) | [minimax-2.x.md](minimax-2.x.md) |
+| Llama-3.1-70B | 70B | [llama3.1-70b.md](llama3.1-70b.md) |
 
 ## 通用启动参数
 
