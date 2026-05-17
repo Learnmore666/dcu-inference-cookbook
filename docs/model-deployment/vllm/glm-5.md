@@ -153,7 +153,6 @@ export ROCSHMEM_TOPO_FILE_FORCE=/mnt/glm5_pd/topo_400g.conf
 
 vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
     -q slimquant_marlin \
-    --port 20012 \
     --trust-remote-code \
     --dtype bfloat16 \
     -tp 8 \
@@ -168,7 +167,7 @@ vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
     --speculative_config '{"method": "mtp", "num_speculative_tokens": 2, "quantization": "slimquant_marlin"}' \
     --enable-lightly-cp --enable-lightly-cplb \
     --enforce-eager \
-    --kv-transfer-config '{"kv_connector":"DuSwiftConnectorDp","kv_role":"kv_producer","kv_buffer_size":"1e4","kv_port":"21002","kv_connector_extra_config":{"proxy_ip":"10.16.1.36","proxy_port":"30001","http_port":"20012","send_type":"PUT_ASYNC","instance_ip":"10.16.1.36"}}'
+    --kv-transfer-config '{"kv_connector":"DuSwiftConnectorDp","kv_role":"kv_producer","kv_buffer_size":"1e4","kv_port":"21002","kv_connector_extra_config":{"proxy_ip":"10.16.1.36","proxy_port":"30001","http_port":"8000","send_type":"PUT_ASYNC","instance_ip":"10.16.1.36"}}'
 ```
 
 #### D node 0
@@ -226,7 +225,6 @@ export VLLM_USE_DP_CONNECTOR=1
 
 vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
     -q slimquant_marlin \
-    --port 20013 \
     --trust-remote-code \
     --dtype bfloat16 \
     -dp 16 \
@@ -242,7 +240,7 @@ vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
     --kv-cache-dtype fp8_ds_mla \
     --cc '{"pass_config": {"fuse_act_quant": false}}' \
     --speculative_config '{"method": "mtp", "num_speculative_tokens": 2, "quantization": "slimquant_marlin"}' \
-    --kv-transfer-config '{"kv_connector": "DuSwiftConnectorDp", "kv_role": "kv_consumer", "kv_buffer_size": "1e9", "kv_port": "21003", "kv_connector_extra_config": {"proxy_ip": "10.16.1.36", "proxy_port": "30001", "http_port": "20013", "send_type": "PUT_ASYNC", "instance_ip": "10.16.1.42"}}' \
+    --kv-transfer-config '{"kv_connector": "DuSwiftConnectorDp", "kv_role": "kv_consumer", "kv_buffer_size": "1e9", "kv_port": "21003", "kv_connector_extra_config": {"proxy_ip": "10.16.1.36", "proxy_port": "30001", "http_port": "8000", "send_type": "PUT_ASYNC", "instance_ip": "10.16.1.42"}}' \
     --data-parallel-size-local 8 \
     --data-parallel-address 10.16.1.42 \
     --data-parallel-rpc-port 1127 \
@@ -306,7 +304,6 @@ export VLLM_USE_DP_CONNECTOR=1
 
 vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
     -q slimquant_marlin \
-    --port 20013 \
     --trust-remote-code \
     --dtype bfloat16 \
     -dp 16 \
@@ -322,7 +319,7 @@ vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
     --kv-cache-dtype fp8_ds_mla \
     -cc '{"pass_config": {"fuse_act_quant": false}}' \
     --speculative_config '{"method": "mtp", "num_speculative_tokens": 2, "quantization": "slimquant_marlin"}' \
-    --kv-transfer-config '{"kv_connector": "DuSwiftConnectorDp", "kv_role": "kv_consumer", "kv_buffer_size": "1e9", "kv_port": "21003", "kv_connector_extra_config": {"proxy_ip": "10.16.1.36", "proxy_port": "30001", "http_port": "20013", "send_type": "PUT_ASYNC", "instance_ip": "10.16.1.42"}}' \
+    --kv-transfer-config '{"kv_connector": "DuSwiftConnectorDp", "kv_role": "kv_consumer", "kv_buffer_size": "1e9", "kv_port": "21003", "kv_connector_extra_config": {"proxy_ip": "10.16.1.36", "proxy_port": "30001", "http_port": "8000", "send_type": "PUT_ASYNC", "instance_ip": "10.16.1.42"}}' \
     --data-parallel-size-local 8 \
     --data-parallel-address 10.16.1.42 \
     --data-parallel-rpc-port 1127 \
