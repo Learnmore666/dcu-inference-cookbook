@@ -59,9 +59,9 @@ description: Guide for adding a new model deployment doc to dcu-inference-cookbo
 - `### GLM-5-Channel-INT4-w4a8 IFB BW1000 8x` → anchor `#glm-5-channel-int4-w4a8-ifb-bw1000-8x`
 - `### GLM-5-Channel-INT4-w4a8 2P2D BW1000 32x` → anchor `#glm-5-channel-int4-w4a8-2p2d-bw1000-32x`
 
-### IFB 章节结构
+### SGLang IFB 章节结构
 
-IFB 章节只有一个 bash 代码块，无需子标题：
+SGLang IFB 章节只有一个 bash 代码块，无需子标题：
 
 ````markdown
 ### GLM-5-Channel-INT4-w4a8 IFB BW1000 8x
@@ -77,9 +77,9 @@ sglang serve \
 ```
 ````
 
-### PD 分离章节结构
+### SGLang PD 分离章节结构
 
-PD 分离章节开头加一行 IB 网卡配置说明，然后用 `####` 划分各节点：
+SGLang PD 分离章节开头加一行 IB 网卡配置说明，然后用 `####` 划分各节点：
 
 ````markdown
 ### GLM-5-Channel-INT4-w4a8 2P2D BW1000 32x
@@ -134,11 +134,84 @@ python3 -m sglang_router.launch_router \
   --prefill http://<P_node0_ip>:30000 \
   --decode http://<D_node0_ip>:30000 \
   --policy cache_aware \
-  --port 30005
+  --port 30001
+```
+````
+
+### vLLM IFB 章节结构
+
+vLLM IFB 章节只有一个 bash 代码块，无需子标题：
+
+````markdown
+### GLM-5-Channel-INT4-w4a8 IFB BW1100 8x
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+export ...
+
+vllm serve hygon/GLM-5-Channel-INT4-w4a8 \
+    -q <quantization> \
+    --trust-remote-code \
+    --dtype bfloat16 \
+    -tp 8 \
+    ...
+```
+````
+
+### vLLM PD 分离章节结构
+
+vLLM PD 分离的代理（proxy）内置于 P 节点进程中，通过 `--kv-transfer-config` 的 `proxy_port` 对外暴露，无需独立 Router 进程。章节开头加一行说明 P 节点和 D node 0 的示例 IP，然后用 `####` 划分各节点：
+
+````markdown
+### GLM-5-Channel-INT8-w8a8 1P2D BW1100 24x
+
+以下示例中 `10.16.1.36` 为 P 节点（也是代理节点），`10.16.1.42` 是 D node 0 的主节点，实际部署时请根据实际情况修改。
+
+#### P node
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+export ...
+export VLLM_USE_DP_CONNECTOR=1
+
+vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
+    -q slimquant_marlin \
+    --trust-remote-code \
+    ...
+    --enable-lightly-cp --enable-lightly-cplb \
+    --enforce-eager \
+    --kv-transfer-config '{"kv_connector":"DuSwiftConnectorDp","kv_role":"kv_producer","kv_buffer_size":"1e4","kv_port":"21002","kv_connector_extra_config":{"proxy_ip":"<P_node_ip>","proxy_port":"30001","http_port":"8000","send_type":"PUT_ASYNC","instance_ip":"<P_node_ip>"}}'
+```
+
+#### D node 0
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+export ...
+export VLLM_USE_DP_CONNECTOR=1
+
+vllm serve hygon/GLM-5-Channel-INT8-w8a8 \
+    -q slimquant_marlin \
+    --trust-remote-code \
+    ...
+    --kv-transfer-config '{"kv_connector":"DuSwiftConnectorDp","kv_role":"kv_consumer","kv_buffer_size":"1e9","kv_port":"21003","kv_connector_extra_config":{"proxy_ip":"<P_node_ip>","proxy_port":"30001","http_port":"8000","send_type":"PUT_ASYNC","instance_ip":"<D_node0_ip>"}}' \
+    --data-parallel-size-local 8 \
+    --data-parallel-address <D_node0_ip> \
+    --data-parallel-rpc-port 1127 \
+    --data-parallel-start-rank 0 \
+    --disable-custom-all-reduce
+```
+
+#### D node 1
+
+```bash
+...（同 D node 0，--data-parallel-start-rank 改为上一个 D node 的起始 rank + data-parallel-size-local；最后一个 D node 加 --headless）
 ```
 ````
 
 ## 模型相关说明
+
+### SGLang
 
 - **模型 ID**：使用 ModelScope 上的完整路径，例如 `hygon/GLM-5-Channel-INT4-w4a8`
 - **启动命令**：使用 `sglang serve`（不用 `python -m sglang.launch_server`）
@@ -146,11 +219,29 @@ python3 -m sglang_router.launch_router \
 - **`--host`**：PD 分离模式必须指定，绑定节点对外的 IP；IFB 不需要。推荐用 `$(ip route get 1.1.1.1 | awk '/src/{print $7}')` 自动获取
 - **`--dist-init-addr`**：多节点必须指定。格式 `<IP>:5000`。node 0 用自身 IP，其余节点填 node 0 的 IP
 - **`--served-model-name`**：PD 分离时所有 P/D 节点必须设置相同的值；API 调用的 `model` 字段须与此一致
-- **端口**：SGLang 默认 `30000`，vLLM 默认 `8000`。Router 默认 `30000`，与 P node 0 同机时需换端口（推荐 `30005`）；不在文档中显式指定端口除非有特殊原因
+- **端口**：SGLang 默认 `30000`。Router 与 P node 0 同机时需换端口（推荐 `30001`）；不在文档中显式指定端口除非有特殊原因
+
+### vLLM
+
+- **模型 ID**：使用 ModelScope 上的完整路径，例如 `hygon/GLM-5-Channel-INT8-w8a8`
+- **启动命令**：使用 `vllm serve`
+- **必须加**：`--trust-remote-code`、`-q <quantization>`
+- **`--served-model-name`**：PD 分离时所有 P/D 节点必须设置相同的值；API 调用的 `model` 字段须与此一致
+- **端口**：vLLM 默认 `8000`（HTTP）；不在文档中显式指定 `--port` 除非有特殊原因
+- **`--kv-transfer-config`**：PD 分离必须指定，P 节点为 `kv_producer`，D 节点为 `kv_consumer`
+  - `proxy_port`：P 节点对外暴露的代理端口，客户端通过此端口发送请求（推荐 `30001`）
+  - `http_port`：节点自身的 HTTP 端口，须与 `--port` 一致（默认 `8000`）
+  - `kv_port`：KV 张量传输端口，P 节点与 D 节点须不同（如 P 用 `21002`，D 用 `21003`）
+  - `instance_ip`：当前节点实际 IP
+  - `proxy_ip`：P 节点 IP（P/D 节点均填 P 节点 IP）
+- **D 节点多机**：通过 `--data-parallel-*` 参数配置；最后一个 D 节点加 `--headless`
+- **P 节点特有**：`--enable-lightly-cp --enable-lightly-cplb --enforce-eager`
 
 ## API 调用章节格式
 
-`## API 调用` 章节分两个子节：
+`## API 调用` 章节分两个子节：`### IFB` 和 `### PD 分离`。
+
+### SGLang
 
 ````markdown
 ## API 调用
@@ -176,14 +267,52 @@ curl http://localhost:30000/v1/chat/completions \
 ### PD 分离
 
 PD 分离模式下，客户端请求发送到 SGLang Router，而非直接发送到 P/D 节点。Router 默认端口为 `30000`，
-若与 P node 0 部署在同一机器上需指定其他端口（示例中为 `30005`）。
+若与 P node 0 部署在同一机器上需指定其他端口（示例中为 `30001`）。
 
 ```python
-client = OpenAI(base_url="http://<router_ip>:30005/v1", api_key="not-needed")
+client = OpenAI(base_url="http://<router_ip>:30001/v1", api_key="not-needed")
 ```
 
 ```bash
-curl http://<router_ip>:30005/v1/chat/completions ...
+curl http://<router_ip>:30001/v1/chat/completions ...
+```
+````
+
+### vLLM
+
+````markdown
+## API 调用
+
+### IFB
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:8000/v1", api_key="not-needed")
+
+response = client.chat.completions.create(
+    model="hygon/GLM-5-Channel-INT4-w4a8",  # 替换为实际使用的模型名
+    messages=[...],
+    max_tokens=2048,
+)
+```
+
+```bash
+curl http://localhost:8000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "hygon/GLM-5-Channel-INT4-w4a8", "messages": [...], "max_tokens": 128}'
+```
+
+### PD 分离
+
+vLLM PD 分离模式下，客户端请求直接发送到 P 节点的代理端口（`proxy_port`，示例中为 `10.16.1.36:30001`）。
+
+```python
+client = OpenAI(base_url="http://<P_node_ip>:30001/v1", api_key="not-needed")
+```
+
+```bash
+curl http://<P_node_ip>:30001/v1/chat/completions ...
 ```
 ````
 
@@ -200,4 +329,16 @@ curl http://<router_ip>:30005/v1/chat/completions ...
 |                                                                                                 | INT8 W8A8 | BW1100 | 24 | 1P2D | [**`>_`**](#glm-5-channel-int8-w8a8-1p2d-bw1100-24x) |
 | [hygon/GLM-5-Channel-FP8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-FP8-w8a8)   |  FP8 W8A8 | BW1100 |  8 | IFB  | [**`>_`**](#glm-5-channel-fp8-w8a8-ifb-bw1100-8x)    |
 |                                                                                                 |  FP8 W8A8 | BW1100 | 24 | 1P2D | [**`>_`**](#glm-5-channel-fp8-w8a8-1p2d-bw1100-24x)  |
+````
+
+## 示例（vLLM GLM-5）
+
+````markdown
+## 模型列表
+
+| 模型权重 | 量化方式 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
+| -------- | -------- | -------- | ---- | -------- | -------- |
+| [hygon/GLM-5-Channel-INT4-w4a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT4-w4a8) | INT4 W4A8 | BW1100 |  8 | IFB  | [**`>_`**](#glm-5-channel-int4-w4a8-ifb-bw1100-8x)   |
+| [hygon/GLM-5-Channel-INT8-w8a8](https://www.modelscope.cn/models/hygon/GLM-5-Channel-INT8-w8a8) | INT8 W8A8 | BW1100 |  8 | IFB  | [**`>_`**](#glm-5-channel-int8-w8a8-ifb-bw1100-8x)   |
+|                                                                                                 | INT8 W8A8 | BW1100 | 24 | 1P2D | [**`>_`**](#glm-5-channel-int8-w8a8-1p2d-bw1100-24x) |
 ````
