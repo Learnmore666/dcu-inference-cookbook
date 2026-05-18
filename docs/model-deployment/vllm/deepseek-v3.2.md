@@ -8,12 +8,12 @@ DeepSeek V3.2 是深度求索公司于 2025 年底发布的大语言模型，基
 
 | 模型权重 | 量化方式 | vLLM 版本 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
 | -------- | -------- | --------- | -------- | ---- | -------- | -------- |
-| [hygon/DeepSeek-V3.2-Channel-INT8-w8a8](https://www.modelscope.cn/models/hygon/DeepSeek-V3.2-Channel-INT8-w8a8) | INT8 W8A8 | 0.18.1 | BW1000 | 16 | IFB | [**`>_`**](#deepseek-v32-channel-int8-w8a8-ifb-bw1000-16x) |
-|                                                                                                                   | INT8 W8A8 | 0.18.1 | BW1100 |  8 | IFB | [**`>_`**](#deepseek-v32-channel-int8-w8a8-ifb-bw1100-8x)  |
+| [hygon/DeepSeek-V3.2-Channel-INT8-w8a8](https://www.modelscope.cn/models/hygon/DeepSeek-V3.2-Channel-INT8-w8a8) | INT8 W8A8 | 0.18 | BW1000 | 16 | IFB | [**`>_`**](#deepseek-v32-channel-int8-w8a8-ifb-bw1000-16x-vllm-018) |
+|                                                                                                                   | INT8 W8A8 | 0.18 | BW1100 |  8 | IFB | [**`>_`**](#deepseek-v32-channel-int8-w8a8-ifb-bw1100-8x-vllm-018)  |
 
 ## 启动命令
 
-### DeepSeek-V3.2-Channel-INT8-w8a8 IFB BW1000 16x
+### DeepSeek-V3.2-Channel-INT8-w8a8 IFB BW1000 16x vLLM 0.18
 
 ```bash
 export VLLM_USE_MODELSCOPE=1
@@ -60,7 +60,7 @@ vllm serve hygon/DeepSeek-V3.2-Channel-INT8-w8a8 \
     --kv-cache-dtype fp8_ds_mla
 ```
 
-### DeepSeek-V3.2-Channel-INT8-w8a8 IFB BW1100 8x
+### DeepSeek-V3.2-Channel-INT8-w8a8 IFB BW1100 8x vLLM 0.18
 
 ```bash
 export VLLM_USE_MODELSCOPE=1
