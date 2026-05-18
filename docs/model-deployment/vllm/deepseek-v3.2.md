@@ -1,4 +1,4 @@
-# Deepseek-v3.2-w8a8 on vLLM
+# DeepSeek-V3.2 on vLLM
 
 ## 模型简介
 
@@ -6,23 +6,25 @@ DeepSeek V3.2 是深度求索公司于 2025 年底发布的大语言模型，基
 
 ## 模型列表
 
-| 模型 | 参数量 | 上下文 | 推荐硬件 |
-|------|--------|--------|---------|
-| Deepseek-v3.2 | 671B | 128K | 8x BW1100 144GB |
+| 模型权重 | 量化方式 | vLLM 版本 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
+| -------- | -------- | --------- | -------- | ---- | -------- | -------- |
+| [hygon/DeepSeek-V3.2-Channel-INT8-w8a8](https://www.modelscope.cn/models/hygon/DeepSeek-V3.2-Channel-INT8-w8a8) | INT8 W8A8 | 0.18.1 | BW1000 | 16 | IFB | [**`>_`**](#deepseek-v32-channel-int8-w8a8-ifb-bw1000-16x) |
+|                                                                                                                   | INT8 W8A8 | 0.18.1 | BW1100 |  8 | IFB | [**`>_`**](#deepseek-v32-channel-int8-w8a8-ifb-bw1100-8x)  |
 
 ## 启动命令
 
-### Deepseek-v3.2-w8a8（八卡 144G）
+### DeepSeek-V3.2-Channel-INT8-w8a8 IFB BW1000 16x
 
 ```bash
-export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7     
-export ALLREDUCE_STREAM_WITH_COMPUTE=1           
-export NCCL_MIN_NCHANNELS=16                      
-export NCCL_MAX_NCHANNELS=16                   
+export VLLM_USE_MODELSCOPE=1
+export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+export ALLREDUCE_STREAM_WITH_COMPUTE=1
+export NCCL_MIN_NCHANNELS=16
+export NCCL_MAX_NCHANNELS=16
 export Allgather_Base_STREAM_WITH_COMPUTE=1
 export SENDRECV_STREAM_WITH_COMPUTE=1
-export HIP_KERNEL_EVENT_SYSTENFENCE=1   
-export VLLM_RPC_TIMEOUT=1800000  
+export HIP_KERNEL_EVENT_SYSTENFENCE=1
+export VLLM_RPC_TIMEOUT=1800000
 
 export VLLM_SPEC_DECODE_EAGER=0
 export VLLM_USE_GLOBAL_CACHE13=1
@@ -32,9 +34,9 @@ export VLLM_USE_PIECEWISE=0
 export USE_FUSED_RMS_QUANT=1
 export USE_FUSED_SILU_MUL_QUANT=1
 export VLLM_USE_OPT_CAT=1
-export VLLM_USE_FUSED_FILL_RMS_CAT=1 
+export VLLM_USE_FUSED_FILL_RMS_CAT=1
 export VLLM_USE_LIGHTOP_MOE_SUM_MUL_ADD=0
-export VLLM_USE_LIGHTOP_RMS_ROPE_CONCAT=0 
+export VLLM_USE_LIGHTOP_RMS_ROPE_CONCAT=0
 export VLLM_DISABLE_DSA=0
 export VLLM_USE_V32_ENCODE=1
 export VLLM_USE_FLASH_MLA=1
@@ -42,23 +44,72 @@ export VLLM_USE_FLASH_ATTN_FP8=1
 export VLLM_USE_CAT_MLA=1
 
 vllm serve hygon/DeepSeek-V3.2-Channel-INT8-w8a8 \
- --dtype bfloat16 \
- --trust-remote-code \
- --max-model-len 40960 \
- -tp 8 \
- --gpu-memory-utilization 0.92 \
- --max-num-seqs 256 \
- --disable-log-requests \
- --enable-chunked-prefill \
- --max-num-batched-tokens 16384 \
- --no-enable-prefix-caching \
- -cc '{"pass_config": {"fuse_act_quant": false}}' \
- --speculative_config '{"method": "mtp", "num_speculative_tokens": 2}' \
- --kv-cache-dtype fp8_ds_mla
+    -q slimquant_marlin \
+    --trust-remote-code \
+    --dtype bfloat16 \
+    -tp 16 \
+    --max-model-len 40960 \
+    --gpu-memory-utilization 0.92 \
+    --max-num-seqs 256 \
+    --disable-log-requests \
+    --enable-chunked-prefill \
+    --max-num-batched-tokens 16384 \
+    --no-enable-prefix-caching \
+    -cc '{"pass_config": {"fuse_act_quant": false}}' \
+    --speculative_config '{"method": "mtp", "num_speculative_tokens": 2}' \
+    --kv-cache-dtype fp8_ds_mla
+```
 
+### DeepSeek-V3.2-Channel-INT8-w8a8 IFB BW1100 8x
+
+```bash
+export VLLM_USE_MODELSCOPE=1
+export HIP_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export ALLREDUCE_STREAM_WITH_COMPUTE=1
+export NCCL_MIN_NCHANNELS=16
+export NCCL_MAX_NCHANNELS=16
+export Allgather_Base_STREAM_WITH_COMPUTE=1
+export SENDRECV_STREAM_WITH_COMPUTE=1
+export HIP_KERNEL_EVENT_SYSTENFENCE=1
+export VLLM_RPC_TIMEOUT=1800000
+
+export VLLM_SPEC_DECODE_EAGER=0
+export VLLM_USE_GLOBAL_CACHE13=1
+export VLLM_FUSED_MOE_CHUNK_SIZE=8192
+export VLLM_REJECT_SAMPLE_OPT=0
+export VLLM_USE_PIECEWISE=0
+export USE_FUSED_RMS_QUANT=1
+export USE_FUSED_SILU_MUL_QUANT=1
+export VLLM_USE_OPT_CAT=1
+export VLLM_USE_FUSED_FILL_RMS_CAT=1
+export VLLM_USE_LIGHTOP_MOE_SUM_MUL_ADD=0
+export VLLM_USE_LIGHTOP_RMS_ROPE_CONCAT=0
+export VLLM_DISABLE_DSA=0
+export VLLM_USE_V32_ENCODE=1
+export VLLM_USE_FLASH_MLA=1
+export VLLM_USE_FLASH_ATTN_FP8=1
+export VLLM_USE_CAT_MLA=1
+
+vllm serve hygon/DeepSeek-V3.2-Channel-INT8-w8a8 \
+    -q slimquant_marlin \
+    --trust-remote-code \
+    --dtype bfloat16 \
+    -tp 8 \
+    --max-model-len 40960 \
+    --gpu-memory-utilization 0.92 \
+    --max-num-seqs 256 \
+    --disable-log-requests \
+    --enable-chunked-prefill \
+    --max-num-batched-tokens 16384 \
+    --no-enable-prefix-caching \
+    -cc '{"pass_config": {"fuse_act_quant": false}}' \
+    --speculative_config '{"method": "mtp", "num_speculative_tokens": 2}' \
+    --kv-cache-dtype fp8_ds_mla
 ```
 
 ## API 调用
+
+### IFB
 
 ```python
 from openai import OpenAI
@@ -68,25 +119,15 @@ client = OpenAI(base_url="http://localhost:8000/v1", api_key="not-needed")
 response = client.chat.completions.create(
     model="hygon/DeepSeek-V3.2-Channel-INT8-w8a8",
     messages=[
-        {"role": "user", "content": "请总结以下长文档的关键要点..."},
+        {"role": "user", "content": "你好，请介绍一下你自己。"},
     ],
-    max_tokens=4096,
-    temperature=0,
-
+    max_tokens=2048,
 )
 print(response.choices[0].message.content)
- 
 ```
-
-## curl 示例
 
 ```bash
 curl http://localhost:8000/v1/chat/completions \
-    -H "Content-Type: application/json"  \
-    -d '{
-        "model": "hygon/DeepSeek-V3.2-Channel-INT8-w8a8", 
-        "messages": [{"role": "user", "content": "中国的首都是什么？"}], 
-        "temperature": 0, 
-        "max_tokens": 100
-    }'
+  -H "Content-Type: application/json" \
+  -d '{"model": "hygon/DeepSeek-V3.2-Channel-INT8-w8a8", "messages": [{"role": "user", "content": "你好"}], "max_tokens": 128}'
 ```
