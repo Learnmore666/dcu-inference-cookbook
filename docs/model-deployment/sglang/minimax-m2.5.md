@@ -3,21 +3,23 @@
 ## 模型简介
 
 MiniMax-M2.5-w8a8 是 MiniMax 推出的大规模 MoE（混合专家）语言模型系列，总参数量 230B，激活参数约 10B，在长文本理解和生成方面表现突出。
-模型链接：https://modelscope.cn/models/metax-tech/MiniMax-M2.5-W8A8/summary
-
-
 
 ## 模型列表
 
-| 模型 | 总参数 | 激活参数 | 上下文 | 量化方式 | 推荐硬件 |
-|------|--------|---------|--------|---------|---------|
-| MiniMax-M2.5-w8a8 | 230B | ~10B | 128K | W8A8 | 8 x BW1100 144GB TP |
-
+| 模型权重 | 量化方式 | SGLang 版本 | 推荐硬件 | 卡数 | 部署方式 | 启动命令 |
+| -------- | -------- | ----------- | -------- | ---- | -------- | -------- |
+| [MiniMax-M2.5-W8A8](https://modelscope.cn/models/metax-tech/MiniMax-M2.5-W8A8/summary) | INT8 W8A8 | 0.5.10 | BW1100 | 8 | IFB | [**`>_`**](#minimax-m2-channel-int8-w8a8-ifb-bw1100-8x) |
+|                                                                                                 | INT8 W8A8 | 0.5.10 | BW1100 | 16 | 1P1D| [**`>_`**](#minimax-m2-channel-int8-w8a8-1p1d-bw1100-16x) |
+|                                                                                                 | INT8 W8A8 | 0.5.10 | BW1000 | 8 | IFB | [**`>_`**](#minimax-m2-channel-int8-w8a8-ifb-bw1000-8x) |
+|                                                                                                 | INT8 W8A8 | 0.5.10 | BW1000 | 16 | 1P1D| [**`>_`**](#minimax-m2-channel-int8-w8a8-1p1d-bw1000-16x) |
 
 
 ## 启动命令
 
-### Minimax-M2.5-W8A8 (IFB BW1100 NIC Type : mlx)
+### Minimax-M2-Channel-INT8-w8a8 IFB BW1100 8x
+
+网卡配置参考：[mlx]
+
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
 export SGL_CHUNKED_PREFIX_CACHE_THRESHOLD=0
@@ -38,25 +40,29 @@ export NCCL_MIN_NCHANNELS=16
 export ALLREDUCE_STREAM_WITH_COMPUTE=1
 
 sglang serve \
-    --model-path /MiniMax-M2.5-W8A8 \
-    --quantization slimquant_marlin \
-    --kv-cache-dtype fp8_e4m3 \
-    --trust-remote-code \
-    --page-size 64 \
-    --dtype bfloat16 \
-    --tp-size 4 --pp-size 1 --dp-size 2 \
-    --tool-call-parser minimax-m2 \
-    --reasoning-parser minimax-append-think \
-    --mem-fraction-static 0.9 \
-    --attention-backend fa3 \
-    --numa-node 0 0 0 0 1 1 1 1 \
-    --chunked-prefill-size 16384 \
-    --max-running-requests 512 \
-    --context-length 131072
+  --model-path /MiniMax-M2.5-W8A8 \
+  --quantization slimquant_marlin \
+  --kv-cache-dtype fp8_e4m3 \
+  --trust-remote-code \
+  --page-size 64 \
+  --dtype bfloat16 \
+  --tp-size 4 --pp-size 1 --dp-size 2 \
+  --tool-call-parser minimax-m2 \
+  --reasoning-parser minimax-append-think \
+  --mem-fraction-static 0.9 \
+  --attention-backend fa3 \
+  --numa-node 0 0 0 0 1 1 1 1 \
+  --chunked-prefill-size 16384 \
+  --max-running-requests 512 \
+  --context-length 131072
 ```
 
-### Minimax-M2.5-W8A8 (IFB BW1000 NIC Type : scha)
-## 结合硬件资源，短上下文推荐DP2TP4 长上下文推荐TP8
+### Minimax-M2-Channel-INT8-w8a8 IFB BW1000 8x
+
+网卡配置参考：[scha]
+
+结合硬件资源，短上下文推荐DP2TP4 长上下文推荐TP8
+
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
 export SGL_CHUNKED_PREFIX_CACHE_THRESHOLD=0
@@ -86,26 +92,28 @@ export VLLM_USE_LIGHTOP_MOE_ALIGN=1
 export MC_ENABLE_DEST_DEVICE_AFFINITY=1
 
 sglang serve \
-    --model-path /MiniMax-M2.5-W8A8 \
-    --quantization slimquant_marlin \
-    --kv-cache-dtype bfloat16 \
-    --trust-remote-code \
-    --page-size 64 \
-    --dtype bfloat16 \
-    --tp-size 8 --pp-size 1 --dp-size 1 \
-    --tool-call-parser minimax-m2 \
-    --reasoning-parser minimax-append-think \
-    --mem-fraction-static 0.95  \
-    --attention-backend fa3 \
-    --numa-node 0 0 0 0 1 1 1 1 \
-    --chunked-prefill-size 8192 \
-    --max-running-requests 512 \
-    --context-length 131072 \
+  --model-path /MiniMax-M2.5-W8A8 \
+  --quantization slimquant_marlin \
+  --kv-cache-dtype bfloat16 \
+  --trust-remote-code \
+  --page-size 64 \
+  --dtype bfloat16 \
+  --tp-size 8 --pp-size 1 --dp-size 1 \
+  --tool-call-parser minimax-m2 \
+  --reasoning-parser minimax-append-think \
+  --mem-fraction-static 0.95  \
+  --attention-backend fa3 \
+  --numa-node 0 0 0 0 1 1 1 1 \
+  --chunked-prefill-size 8192 \
+  --max-running-requests 512 \
+  --context-length 131072 \
 ```
 
-### MiniMax-M2.5-W8A8(PD分离 1P 1D BW1100 NIC Type : mlx)
+### MiniMax-M2-Channel-INT8-w8a8 1P1D BW1100 16x
 
-## P节点 
+网卡配置参考：[mlx]
+
+#### P节点 
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
 export SGL_CHUNKED_PREFIX_CACHE_THRESHOLD=0
@@ -127,27 +135,27 @@ export MC_GID_INDEX=0
 export ALLREDUCE_STREAM_WITH_COMPUTE=1
 
 sglang serve \
-    --model-path /MiniMax-M2.5-W8A8 \
-    --quantization slimquant_marlin  \
-    --kv-cache-dtype fp8_e4m3 \
-    --trust-remote-code \ 
-    --page-size 64 \ 
-    --dtype bfloat16 \ 
-    --tp-size 2 --pp-size 4   --dp-size 1 \
-    --tool-call-parser minimax-m2 \
-    --reasoning-parser minimax-append-think \
-    --mem-fraction-static 0.9 \ 
-    --attention-backend fa3 \
-    --numa-node 0 0 0 0 1 1 1 1 \ 
-    --chunked-prefill-size 4096 \
-    --max-running-requests 512 \ 
-    --context-length 131072 \
-    --disaggregation-mode prefill \
-    --load-balance-method round_robin \  
-    --host 10.63.60.114 --port 30000 
+  --model-path /MiniMax-M2.5-W8A8 \
+  --quantization slimquant_marlin \
+  --kv-cache-dtype fp8_e4m3 \
+  --trust-remote-code \ 
+  --page-size 64 \ 
+  --dtype bfloat16 \ 
+  --tp-size 2 --pp-size 4 --dp-size 1 \
+  --tool-call-parser minimax-m2 \
+  --reasoning-parser minimax-append-think \
+  --mem-fraction-static 0.9 \ 
+  --attention-backend fa3 \
+  --numa-node 0 0 0 0 1 1 1 1 \ 
+  --chunked-prefill-size 4096 \
+  --max-running-requests 512 \ 
+  --context-length 131072 \
+  --disaggregation-mode prefill \
+  --load-balance-method round_robin \
+  --host 10.63.60.114 --port 30000 
 ```
 
-## D节点
+#### D节点
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
 export SGL_CHUNKED_PREFIX_CACHE_THRESHOLD=0
@@ -167,28 +175,31 @@ export NCCL_MAX_NCHANNELS=16
 export NCCL_MIN_NCHANNELS=16
 export MC_GID_INDEX=0
 export ALLREDUCE_STREAM_WITH_COMPUTE=1
-                       
+ 
 sglang serve \
-    --model-path  /MiniMax-M2.5-W8A8 \
-    --quantization slimquant_marlin \
-    --kv-cache-dtype fp8_e4m3 \
-    --trust-remote-code \ 
-    --page-size 64 \
-    --dtype bfloat16 \ 
-    --tp-size 8 --pp-size 1  --dp-size 1 \
-    --tool-call-parser minimax-m2 \
-    --reasoning-parser minimax-append-think\
-    --mem-fraction-static 0.9 --attention-backend fa3 \ 
-    --numa-node 0 0 0 0 1 1 1 1 \ 
-    --max-running-requests 512 \
-    --context-length 131072 \
-    --disaggregation-mode decode \
-    --prefill-round-robin-balance \ 
-    --host 10.63.60.113 --port 30001                         
+  --model-path /MiniMax-M2.5-W8A8 \
+  --quantization slimquant_marlin \
+  --kv-cache-dtype fp8_e4m3 \
+  --trust-remote-code \ 
+  --page-size 64 \
+  --dtype bfloat16 \ 
+  --tp-size 8 --pp-size 1 --dp-size 1 \
+  --tool-call-parser minimax-m2 \
+  --reasoning-parser minimax-append-think\
+  --mem-fraction-static 0.9 --attention-backend fa3 \ 
+  --numa-node 0 0 0 0 1 1 1 1 \ 
+  --max-running-requests 512 \
+  --context-length 131072 \
+  --disaggregation-mode decode \
+  --prefill-round-robin-balance \ 
+  --host 10.63.60.113 --port 30001 
 ```
-### MiniMax-M2.5-W8A8(PD分离 1P 1D BW1000 NIC Type : shca)
 
-## P节点
+### MiniMax-M2-Channel-INT8-w8a8 1P1D BW1000 16x
+
+网卡配置参考：[scha]
+
+#### P节点
 
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
@@ -219,27 +230,27 @@ export VLLM_USE_LIGHTOP_MOE_ALIGN=1
 export MC_ENABLE_DEST_DEVICE_AFFINITY=1
 
 sglang serve \
-    --model-path /MiniMax-M2.5-W8A8 \
-    --quantization slimquant_marlin \ 
-    --kv-cache-dtype bfloat16 \
-    --trust-remote-code \ 
-    --page-size 64 \
-    --dtype bfloat16 \ 
-    --tp-size 8 --pp-size 1  --dp-size 1 \
-    --tool-call-parser minimax-m2 \
-    --reasoning-parser minimax-append-think \
-    --mem-fraction-static 0.9  \
-    --attention-backend fa3 \
-    --numa-node 0 0 0 0 1 1 1 1 \
-    --max-running-requests 512 \
-    --context-length 131072 \
-    --disaggregation-ib-device shca_0,shca_1,shca_2,shca_3 \
-    --disaggregation-mode prefill \
-    --load-balance-method round_robin \ 
-    --host 10.212.16.171 --port 30000
+  --model-path /MiniMax-M2.5-W8A8 \
+  --quantization slimquant_marlin \ 
+  --kv-cache-dtype bfloat16 \
+  --trust-remote-code \ 
+  --page-size 64 \
+  --dtype bfloat16 \ 
+  --tp-size 8 --pp-size 1 --dp-size 1 \
+  --tool-call-parser minimax-m2 \
+  --reasoning-parser minimax-append-think \
+  --mem-fraction-static 0.9 \
+  --attention-backend fa3 \
+  --numa-node 0 0 0 0 1 1 1 1 \
+  --max-running-requests 512 \
+  --context-length 131072 \
+  --disaggregation-ib-device shca_0,shca_1,shca_2,shca_3 \
+  --disaggregation-mode prefill \
+  --load-balance-method round_robin \ 
+  --host 10.212.16.171 --port 30000
 ```
 
-## D节点
+#### D节点
 ```bash
 export USE_DCU_CUSTOM_ALLREDUCE=1
 export SGL_CHUNKED_PREFIX_CACHE_THRESHOLD=0
@@ -269,25 +280,25 @@ export LMSLIM_USE_LIGHTOP=1
 export VLLM_USE_LIGHTOP_MOE_ALIGN=1
 
 sglang serve \
-    --model-path /MiniMax-M2.5-W8A8 \
-    --quantization slimquant_marlin \ 
-    --kv-cache-dtype bfloat16 \
-    --trust-remote-code \ 
-    --page-size 64 \
-    --dtype bfloat16 \ 
-    --tp-size 8 --pp-size 1  --dp-size 1 \
-    --tool-call-parser minimax-m2 \
-    --reasoning-parser minimax-append-think \
-    --mem-fraction-static 0.9 \ 
-    --attention-backend fa3 \
-    --numa-node 0 0 0 0 1 1 1 1 \  
-    --chunked-prefill-size 16384 \
-    --max-running-requests 512 \
-    --context-length 131027 \
-    --disaggregation-mode decode \
-    --prefill-round-robin-balance \ 
-    --host 10.212.16.172 --port 30001 \
-    --disaggregation-ib-device shca_0,shca_1,shca_2,shca_3
+  --model-path /MiniMax-M2.5-W8A8 \
+  --quantization slimquant_marlin \ 
+  --kv-cache-dtype bfloat16 \
+  --trust-remote-code \ 
+  --page-size 64 \
+  --dtype bfloat16 \ 
+  --tp-size 8 --pp-size 1 --dp-size 1 \
+  --tool-call-parser minimax-m2 \
+  --reasoning-parser minimax-append-think \
+  --mem-fraction-static 0.9 \ 
+  --attention-backend fa3 \
+  --numa-node 0 0 0 0 1 1 1 1 \
+  --chunked-prefill-size 16384 \
+  --max-running-requests 512 \
+  --context-length 131027 \
+  --disaggregation-mode decode \
+  --prefill-round-robin-balance \ 
+  --host 10.212.16.172 --port 30001 \
+  --disaggregation-ib-device shca_0,shca_1,shca_2,shca_3
 ```
 
 ## Router
@@ -304,12 +315,10 @@ python3 -m sglang_router.launch_router \
 curl -X POST http://localhost:30002/v1/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "default",
-    "prompt": "介绍一下深度学习的发展",
-    "max_tokens": 300,
-    "temperature": 0
+  "model": "default",
+  "prompt": "介绍一下深度学习的发展",
+  "max_tokens": 300,
+  "temperature": 0
   }'
 ```
-
-
 
