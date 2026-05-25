@@ -40,8 +40,6 @@ export SGLANG_ASSIGN_REQ_TO_TOKEN_POOL=1
 export SGLANG_GET_LAST_LOC=1
 export SGLANG_CREATE_FLASHMLA_KV_INDICES_TRITON=1
 export SGLANG_CREATE_CHUNKED_PREFIX_CACHE_KV_INDICES=1
-export NCCL_MAX_NCHANNELS=16
-export NCCL_MIN_NCHANNELS=16
 export ALLREDUCE_STREAM_WITH_COMPUTE=1
 
 sglang serve \
@@ -78,20 +76,9 @@ export SGLANG_ASSIGN_REQ_TO_TOKEN_POOL=1
 export SGLANG_GET_LAST_LOC=1
 export SGLANG_CREATE_FLASHMLA_KV_INDICES_TRITON=1
 export SGLANG_CREATE_CHUNKED_PREFIX_CACHE_KV_INDICES=1
-export NCCL_MAX_NCHANNELS=16
-export NCCL_MIN_NCHANNELS=16
 export ALLREDUCE_STREAM_WITH_COMPUTE=1
-export MC_ALLOWED_IBV_DEVICES=shca_0,shca_1,shca_2,shca_3
-export NCCL_TOPO_FILE="/home/topo_lib/built-in-508-topo-input-tj-default.xml"
-export LD_LIBRARY_PATH=/home/topo_lib/lib:$LD_LIBRARY_PATH
-export ROCSHMEM_DISABLE_HDP_FLUSH=1
-export ROCSHMEM_GDA_NUM_QPS_DEFAULT_CTX=288
-export ROCSHMEM_HEAP_SIZE=3173741824
-export SGLANG_DEEPEP_NUM_MAX_DISPATCH_TOKENS_PER_RANK=128
-export ROCSHMEM_ALLOWED_IBV_DEVICES=shca_0,shca_1,shca_2,shca_3
 export LMSLIM_USE_LIGHTOP=1
 export VLLM_USE_LIGHTOP_MOE_ALIGN=1
-export MC_ENABLE_DEST_DEVICE_AFFINITY=1
 
 sglang serve \
   --model-path hygon/MiniMax-M2.5-Channel-INT8-w8a8 \
@@ -132,8 +119,6 @@ export SGLANG_ASSIGN_REQ_TO_TOKEN_POOL=1
 export SGLANG_GET_LAST_LOC=1
 export SGLANG_CREATE_FLASHMLA_KV_INDICES_TRITON=1
 export SGLANG_CREATE_CHUNKED_PREFIX_CACHE_KV_INDICES=1
-export NCCL_MAX_NCHANNELS=16
-export NCCL_MIN_NCHANNELS=16
 export ALLREDUCE_STREAM_WITH_COMPUTE=1
 
 sglang serve \
@@ -452,14 +437,65 @@ python3 -m sglang_router.launch_router \
 
 ### IFB
 
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://localhost:30000/v1", api_key="not-needed")
+
+response = client.chat.completions.create(
+    model="hygon/MiniMax-M2.5-Channel-FP8-w8a8",  # 替换为实际使用的模型名
+    messages=[
+        {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
+        {"role": "user", "content": "请分析一下当前中国 AI 芯片产业的发展现状"},
+    ],
+    max_tokens=2048,
+)
+print(response.choices[0].message.content)
+```
+
 ```bash
-curl -X POST http://localhost:30002/v1/completions \
+curl http://localhost:30000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "default",
-    "prompt": "介绍一下深度学习的发展",
-    "max_tokens": 300,
-    "temperature": 0
+    "model": "hygon/MiniMax-M2.5-Channel-FP8-w8a8",
+    "messages": [
+      {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
+      {"role": "user", "content": "中国的首都是哪里？"}
+    ],
+    "max_tokens": 128
+  }'
+```
+
+### PD 分离
+
+PD 分离模式下，客户端请求发送到 SGLang Router，而非直接发送到 P/D 节点。Router 默认端口为 `30002`，若与 P node 0 部署在同一机器上需指定其他端口。
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://<router_ip>:30002/v1", api_key="not-needed")
+
+response = client.chat.completions.create(
+    model="hygon/MiniMax-M2.5-Channel-FP8-w8a8",  # 替换为实际使用的模型名
+    messages=[
+        {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
+        {"role": "user", "content": "请分析一下当前中国 AI 芯片产业的发展现状"},
+    ],
+    max_tokens=2048,
+)
+print(response.choices[0].message.content)
+```
+
+```bash
+curl http://<router_ip>:30002/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "hygon/MiniMax-M2.5-Channel-FP8-w8a8",
+    "messages": [
+      {"role": "system", "content": "你是一个有帮助的 AI 助手。"},
+      {"role": "user", "content": "中国的首都是哪里？"}
+    ],
+    "max_tokens": 128
   }'
 ```
 
