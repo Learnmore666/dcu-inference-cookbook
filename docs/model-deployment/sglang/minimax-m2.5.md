@@ -575,8 +575,8 @@ sglang serve \
   --host 10.63.60.113 --port 30001 
 ```
 
-## Router
-```python
+#### Router
+```bash
 python3 -m sglang_router.launch_router \
 --pd-disaggregation \
 --prefill http://10.63.60.114:30000 \
@@ -584,8 +584,11 @@ python3 -m sglang_router.launch_router \
 --policy cache_aware --port 30002
 ```
 
-## 单次API调用
-```
+## API 调用
+
+### IFB
+
+```bash
 curl -X POST http://localhost:30002/v1/completions \
   -H "Content-Type: application/json" \
   -d '{
