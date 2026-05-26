@@ -15,7 +15,7 @@ MiniMax-M2.5-Channel-FP8-w8a8 是 MiniMax 推出的大规模 MoE（混合专家�
 |                                                                                                 | INT8 W8A8 | 0.5.10 | BW1000 | 8 | IFB | [**`>_`**](#minimax-m2-5-channel-int8-w8a8-ifb-bw1000-8x) |
 |                                                                                                 | INT8 W8A8 | 0.5.10 | BW1000 | 16 | 1P1D| [**`>_`**](#minimax-m2-5-channel-int8-w8a8-1p1d-bw1000-16x) |
 | [MiniMax-M2-5-Channel-FP8-w8a8](https://www.modelscope.cn/models/hygon/MiniMax-M2.5-Channel-FP8-w8a8) | FP8 W8A8 | 0.5.10 | BW1100 | 8 | IFB | [**`>_`**](#minimax-m2-5-channel-fp8-w8a8-ifb-bw1100-8x) |
-|                                                                                                 | FP8 W8A8 | 0.5.10 | BW1100 | 16 | 1P1D| [**`>_`**](#minimax-m2-7-channel-fp8-w8a8-1p1d-bw1100-16x) |
+|                                                                                                 | FP8 W8A8 | 0.5.10 | BW1100 | 16 | 1P1D| [**`>_`**](#minimax-m2-5-channel-fp8-w8a8-1p1d-bw1100-16x) |
 
 
 ## 启动命令
@@ -61,7 +61,10 @@ sglang serve \
   --port 30000
 ```
 
-### MiniMax-M2.5-Channel-FP8-w8a8 IFB BW1100 8x SGLang 0.5.10
+### MiniMax-M2-5-Channel-INT8-w8a8 IFB BW1000 8x
+
+网卡配置参考：[mlx]
+
 ```bash
 export SGLANG_USE_MODELSCOPE=1
 export USE_DCU_CUSTOM_ALLREDUCE=1
@@ -140,9 +143,9 @@ sglang serve \
   --port 30000
 ```
 
-### MiniMax-M2.5-Channel-FP8-w8a8 1P1D BW1100 16x SGLang 0.5.10
+### MiniMax-M2-5-Channel-INT8-w8a8 1P1D BW1100 16x
 
-网卡配置参考：[IB 网卡](../../troubleshooting/common-issues.md#ib网卡)。
+网卡配置参考：[mlx]
 
 #### P node 0
 ```bash
@@ -228,9 +231,9 @@ sglang serve \
   --host 10.63.60.113 --port 30001 
 ```
 
-### MiniMax-M2.5-Channel-FP8-w8a8 1P1D BW1000 16x SGLang 0.5.10
+### MiniMax-M2-5-Channel-INT8-w8a8 1P1D BW1000 16x
 
-网卡配置参考：[IB 网卡](../../troubleshooting/common-issues.md#ib网卡)。
+网卡配置参考：[shca]
 
 #### P node 0
 
